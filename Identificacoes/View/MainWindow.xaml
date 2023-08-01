@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Identificacoes.View.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Identificacoes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <NavigationView x:Name="navView" SelectionFollowsFocus="Enabled" SelectionChanged="navView_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="CPF" Tag="CPF" x:Name="NavItem_CPF" IsSelected="True"/>
+            <NavigationViewItem Content="CNPJ" Tag="CNPJ" x:Name="NavItem_CNPJ"/>
+            <NavigationViewItem Content="Inscrição Estadual" Tag="IE"  x:Name="NavItem_IE"/>
+        </NavigationView.MenuItems>
+        <Frame x:Name="contentFrame"/>
+    </NavigationView>
+</Window>
