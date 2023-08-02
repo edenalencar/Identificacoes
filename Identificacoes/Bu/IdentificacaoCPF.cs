@@ -7,34 +7,33 @@ namespace Identificacoes.Bu
     {
         public IdentificacaoCPF()
         {
-            gerarNucleo();
-            gerarPrimeiroDigito();
-            gerarSegundoDigito();
+            GerarNucleo();
+            GerarPrimeiroDigito();
+            GerarSegundoDigito();
         }
 
-        public override string obterIdentificacaoFormatada()
+        public override string ObterIdentificacaoFormatada()
         {
             var cpfFormatado = new StringBuilder();
-            cpfFormatado.Append(getIdentificacao());
+            cpfFormatado.Append(GetIdentificacao());
             cpfFormatado.Insert(9, "-");
             cpfFormatado.Insert(6, ".");
             cpfFormatado.Insert(3, ".");
             return cpfFormatado.ToString();
         }
 
-        protected override void gerarNucleo()
+        protected override void GerarNucleo()
         {
             for (int i = 0; i < 9; i++)
             {
-                identificacaoModel.Nucleo += gerarNumeroAleatorio();
+                identificacaoModel.Nucleo += GerarNumeroAleatorio();
             }
         }
 
-        protected override void gerarPrimeiroDigito()
+        protected override void GerarPrimeiroDigito()
         {
             var primeiroDigito = 0;
             var somaTotal = 0;
-            var restoDivisao = 0;
             var peso = 10;
 
             for (int i = 0; i < identificacaoModel.Nucleo.Length; i++)
@@ -42,7 +41,7 @@ namespace Identificacoes.Bu
                 somaTotal += Convert.ToInt32(identificacaoModel.Nucleo[i].ToString()) * peso;
                 peso--;
             }
-            restoDivisao = (somaTotal % 11);
+            int restoDivisao = somaTotal % 11;
 
             if (restoDivisao >= 2)
             {
@@ -51,11 +50,10 @@ namespace Identificacoes.Bu
 
             identificacaoModel.PrimeiroDigito = primeiroDigito.ToString();
         }
-        protected override void gerarSegundoDigito()
+        protected override void GerarSegundoDigito()
         {
             var segundoDigito = 0;
             var somaTotal = 0;
-            var restoDivisao = 0;
             var peso = 11;
             var nucleoPrimeiroDigito = identificacaoModel.Nucleo + identificacaoModel.PrimeiroDigito;
 
@@ -65,7 +63,7 @@ namespace Identificacoes.Bu
                 peso--;
             }
 
-            restoDivisao = (somaTotal % 11);
+            int restoDivisao = somaTotal % 11;
 
             if (restoDivisao >= 2)
             {

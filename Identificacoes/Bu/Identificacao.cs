@@ -6,22 +6,23 @@ namespace Identificacoes.Bu
     abstract class Identificacao
     {
         public IdentificacaoModel identificacaoModel = new IdentificacaoModel();
-        public string getIdentificacao()
+        public string GetIdentificacao()
         {
             return identificacaoModel.Nucleo + identificacaoModel.Filial + identificacaoModel.PrimeiroDigito + identificacaoModel.SegundoDigito;           
         }
         
-        protected int gerarNumeroAleatorio()
+        protected int GerarNumeroAleatorio()
         {
             Random rnd = new Random();
             return rnd.Next(0, 10);
         }
 
-        protected abstract void gerarNucleo();
-        protected abstract void gerarPrimeiroDigito();
-        protected virtual void gerarSegundoDigito() { }
-        public virtual void gerarFiliais() { }
-        public abstract string obterIdentificacaoFormatada();
-        
+        protected abstract void GerarNucleo();
+        protected abstract void GerarPrimeiroDigito();
+        protected virtual void GerarSegundoDigito() { }
+        public virtual void GerarFiliais() { }
+        public abstract string ObterIdentificacaoFormatada();
+
+
     }
 }
