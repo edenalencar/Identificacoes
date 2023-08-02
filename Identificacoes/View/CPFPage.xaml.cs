@@ -1,3 +1,4 @@
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -13,6 +14,11 @@ namespace Identificacoes.View
         public CPFPage()
         {            
             this.InitializeComponent();
+        }
+
+        private void Gerar_CPF(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
