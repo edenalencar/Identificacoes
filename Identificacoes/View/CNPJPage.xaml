@@ -10,13 +10,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Padding="12">
-        <TextBox AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap" AcceptsReturn="True" SelectionHighlightColor="Green" MinWidth="400" Height="200" IsReadOnly="True"/>
-        <NumberBox x:Name="NumberBoxSpinButtonPlacementExample" Header="Quantidade:" Value="1" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="100"/>
+        <TextBox x:Name="Resultado" AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap" AcceptsReturn="True" SelectionHighlightColor="Green" MinWidth="400" Height="200" IsReadOnly="True" TextAlignment="Center"/>
+        <NumberBox x:Name="Quantidade" Header="Quantidade:" Value="1" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="100"/>
         <CheckBox x:Name="Formatado" Content="Formatado"/>
         <CheckBox x:Name="Filiais" Content="Filiais"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="7" Padding="12">
-            <Button x:Name="Gerar" Content="Gerar" Style="{StaticResource AccentButtonStyle}"/>
-            <Button x:Name="Copiar" >
+            <Button x:Name="Gerar" Content="Gerar" Style="{StaticResource AccentButtonStyle}" Click="Gerar_CNPJ"/>
+            <Button x:Name="Copiar"  Click="Copiar_Resultado">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Grid.Column="0" FontFamily="Segoe MDL2 Assets" Text="&#xE8C8;" VerticalAlignment="Center"/>
