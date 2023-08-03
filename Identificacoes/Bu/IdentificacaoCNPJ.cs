@@ -12,8 +12,8 @@ namespace Identificacoes.Bu
             GerarPrimeiroDigito();
             GerarSegundoDigito();
         }
-        public IdentificacaoCNPJ(string nucleo, string filial) 
-        { 
+        public IdentificacaoCNPJ(string nucleo, string filial)
+        {
             identificacaoModel.Nucleo = nucleo;
             identificacaoModel.Filial = filial;
             GerarFiliais();
@@ -52,10 +52,12 @@ namespace Identificacoes.Bu
                 if (i == 0 || i == 8)
                 {
                     somaTotal += Convert.ToInt32(nucleoFilial[i].ToString()) * 5;
-                }else if (i == 1 || i == 9)
+                }
+                else if (i == 1 || i == 9)
                 {
                     somaTotal += Convert.ToInt32(nucleoFilial[i].ToString()) * 4;
-                }else if(i == 2 || i == 10)
+                }
+                else if (i == 2 || i == 10)
                 {
                     somaTotal += Convert.ToInt32(nucleoFilial[i].ToString()) * 3;
                 }
@@ -94,7 +96,7 @@ namespace Identificacoes.Bu
             var segundoDigito = 0;
             var somaTotal = 0;
             var restoDivisao = 0;
-            var nucleoPrimeiroDigito = identificacaoModel.Nucleo + identificacaoModel.Filial + identificacaoModel.PrimeiroDigito ;
+            var nucleoPrimeiroDigito = identificacaoModel.Nucleo + identificacaoModel.Filial + identificacaoModel.PrimeiroDigito;
 
             for (int i = 0; i < nucleoPrimeiroDigito.Length; i++)
             {
@@ -149,7 +151,7 @@ namespace Identificacoes.Bu
             {
                 var filial = Convert.ToInt32(identificacaoModel.Filial);
                 filial++;
-                identificacaoModel.Filial = Convert.ToString(filial).PadLeft(4, '0') ;
+                identificacaoModel.Filial = Convert.ToString(filial).PadLeft(4, '0');
             }
         }
     }
