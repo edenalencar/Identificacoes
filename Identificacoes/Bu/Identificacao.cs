@@ -6,7 +6,7 @@ namespace Identificacoes.Bu
     abstract class Identificacao
     {
         public IdentificacaoModel identificacaoModel = new IdentificacaoModel();
-        public string GetIdentificacao()
+        public string ObterIdentificacao()
         {
             return identificacaoModel.Nucleo + identificacaoModel.Filial + identificacaoModel.PrimeiroDigito + identificacaoModel.SegundoDigito;           
         }

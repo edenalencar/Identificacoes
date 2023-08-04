@@ -10,6 +10,11 @@ namespace Identificacoes.Bu
         {
             _ident.Add(Constantes.CPF, new IdentificacaoCPF());
             _ident.Add(Constantes.CNPJ, new IdentificacaoCNPJ());
+            _ident.Add(Constantes.IE_AC, new IdentificacaoIeAc());
+            _ident.Add(Constantes.IE_AL, new IdentificacaoIeAl());
+            _ident.Add(Constantes.IE_AP, new IdentificacaoIeAp());
+            _ident.Add(Constantes.IE_AM, new IdentificacaoIeAm());
+            _ident.Add(Constantes.IE_BA, new IdentificacaoIeBa());
         }
 
         public Identificacao GetIdentificacao(string tipoIdentificacao)
