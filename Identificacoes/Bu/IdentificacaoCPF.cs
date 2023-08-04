@@ -15,7 +15,7 @@ namespace Identificacoes.Bu
         public override string ObterIdentificacaoFormatada()
         {
             var cpfFormatado = new StringBuilder();
-            cpfFormatado.Append(GetIdentificacao());
+            cpfFormatado.Append(ObterIdentificacao());
             cpfFormatado.Insert(9, "-");
             cpfFormatado.Insert(6, ".");
             cpfFormatado.Insert(3, ".");

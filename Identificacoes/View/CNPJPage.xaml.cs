@@ -44,7 +44,7 @@ namespace Identificacoes.View
                     }
                     else
                     {
-                        builder.Append(identificacao.GetIdentificacao() + "\n");
+                        builder.Append(identificacao.ObterIdentificacao() + "\n");
                     }
 
                 }
@@ -60,7 +60,7 @@ namespace Identificacoes.View
                     }
                     else
                     {
-                        builder.Append(identificacao.GetIdentificacao() + "\n");
+                        builder.Append(identificacao.ObterIdentificacao() + "\n");
                     }
                 }
             }

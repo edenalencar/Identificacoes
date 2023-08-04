@@ -32,7 +32,7 @@ namespace Identificacoes.View
                 }
                 else
                 {
-                    builder.Append(identificacaoCPF.GetIdentificacao() + "\n");
+                    builder.Append(identificacaoCPF.ObterIdentificacao() + "\n");
                 }
             }
             resultado.Text = builder.ToString();

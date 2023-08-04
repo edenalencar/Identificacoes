@@ -24,7 +24,7 @@ namespace Identificacoes.Bu
         public override string ObterIdentificacaoFormatada()
         {
             var cnpjFormatado = new StringBuilder();
-            cnpjFormatado.Append(GetIdentificacao());
+            cnpjFormatado.Append(ObterIdentificacao());
             cnpjFormatado.Insert(12, "-");
             cnpjFormatado.Insert(8, "/");
             cnpjFormatado.Insert(5, ".");
@@ -95,7 +95,6 @@ namespace Identificacoes.Bu
         {
             var segundoDigito = 0;
             var somaTotal = 0;
-            var restoDivisao = 0;
             var nucleoPrimeiroDigito = identificacaoModel.Nucleo + identificacaoModel.Filial + identificacaoModel.PrimeiroDigito;
 
             for (int i = 0; i < nucleoPrimeiroDigito.Length; i++)
@@ -134,7 +133,7 @@ namespace Identificacoes.Bu
                 }
             }
 
-            restoDivisao = (somaTotal % 11);
+            int restoDivisao = somaTotal % 11;
             if (restoDivisao >= 2)
             {
                 segundoDigito = 11 - restoDivisao;
