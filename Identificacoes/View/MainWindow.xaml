@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <NavigationView x:Name="navView" SelectionFollowsFocus="Enabled" SelectionChanged="navView_SelectionChanged">
+    <NavigationView x:Name="navView" SelectionFollowsFocus="Enabled" SelectionChanged="navView_SelectionChanged"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <NavigationView.MenuItems>
             <NavigationViewItem Content="CPF" Tag="CPF" x:Name="NavItem_CPF" IsSelected="True"/>
             <NavigationViewItem Content="CNPJ" Tag="CNPJ" x:Name="NavItem_CNPJ"/>

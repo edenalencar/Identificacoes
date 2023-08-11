@@ -16,7 +16,7 @@ namespace Identificacoes
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
+            this.InitializeComponent();            
         }
 
         /// <summary>
@@ -25,10 +25,10 @@ namespace Identificacoes
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new View.MainWindow();
-            m_window.Activate();
+            Window = new View.MainWindow();
+            Window.Activate();
         }
 
-        private Window m_window;
+        public static Window? Window { get; private set; }        
     }
 }
