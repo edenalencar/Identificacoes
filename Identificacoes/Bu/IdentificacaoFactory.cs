@@ -23,6 +23,7 @@ namespace Identificacoes.Bu
             _ident.Add(Constantes.IE_MT, new IdentificacaoIeMt());
             _ident.Add(Constantes.IE_MS, new IdentificacaoIeMs());
             _ident.Add(Constantes.IE_MG, new IdentificacaoIeMg());
+            _ident.Add(Constantes.IE_PA, new IdentificacaoIePa());
         }
 
         public Identificacao GetIdentificacao(string tipoIdentificacao)
