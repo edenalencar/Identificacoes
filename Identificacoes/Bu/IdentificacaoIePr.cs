@@ -16,7 +16,7 @@ namespace Identificacoes.Bu
         {
             var ieFormatada = new StringBuilder();
             ieFormatada.Append(ObterIdentificacao());
-            ieFormatada.Insert(3, "-");
+            ieFormatada.Insert(3, ".");
             ieFormatada.Insert(9, "-");
             return ieFormatada.ToString();
         }
