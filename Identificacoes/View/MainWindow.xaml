@@ -2,13 +2,12 @@
 <Window
     x:Class="Identificacoes.View.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Identificacoes"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <NavigationView x:Name="navView" SelectionFollowsFocus="Enabled" SelectionChanged="navView_SelectionChanged"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <NavigationView x:Name="navView" SelectionFollowsFocus="Enabled" SelectionChanged="navView_SelectionChanged"  Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}">
         <NavigationView.MenuItems>
             <NavigationViewItem Content="CPF" Tag="CPF" x:Name="NavItem_CPF" IsSelected="True"/>
             <NavigationViewItem Content="CNPJ" Tag="CNPJ" x:Name="NavItem_CNPJ"/>

@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}">
     <Page.Resources>
         <!--  These styles can be referenced to create a consistent SettingsPage layout  -->
 
@@ -65,8 +65,8 @@
                     <EntranceThemeTransition FromVerticalOffset="50" />
                     <RepositionThemeTransition IsStaggeringEnabled="False" />
                 </StackPanel.ChildrenTransitions>
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Appearance &amp; behavior" />
-                <labs:SettingsCard Description="Selecione o tema do aplicativo a ser exibido" Header="App theme">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+                <labs:SettingsCard Description="Selecione o tema do aplicativo a ser exibido" Header="Tema do aplicativo">
                     <labs:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE790;" />
                     </labs:SettingsCard.HeaderIcon>
@@ -75,7 +75,49 @@
                         <ComboBoxItem x:Name="Escuro" Content="Escuro" Tag="Dark" />
                         <ComboBoxItem x:Name="Padrao" Content="Usar configuração do sistema" Tag="Default"/>
                     </ComboBox>
-                </labs:SettingsCard>
+                </labs:SettingsCard>         
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Sobre" />
+                <labs:SettingsExpander Description="@2023 Éden Alencar. Todos os direitos reservados." Header="Identificações">
+                    <labs:SettingsExpander.HeaderIcon>
+                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Tiles/SmallTile-sdk.png" />
+                    </labs:SettingsExpander.HeaderIcon>
+                    <TextBlock
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        IsTextSelectionEnabled="True"
+                        Text="0.1.0" />
+                    <labs:SettingsExpander.Items>
+                        <labs:SettingsCard Header="Para clonar esse repositório">
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                IsTextSelectionEnabled="True"
+                                Text="git clone https://github.com/edenalencar/Identificacoes" />
+                        </labs:SettingsCard>
+                        <labs:SettingsCard
+                            x:Name="bugRequestCard"
+                            Click="bugRequestCard_Click"
+                            Header="Registrar um bug ou solicitar novo recurso"
+                            IsClickEnabled="True">
+                            <labs:SettingsCard.ActionIcon>
+                                <FontIcon Glyph="&#xE8A7;" />
+                            </labs:SettingsCard.ActionIcon>
+                        </labs:SettingsCard>
+                        <labs:SettingsCard
+                            HorizontalContentAlignment="Left"
+                            ContentAlignment="Vertical"
+                            Header="Dependências e referências">
+                            <StackPanel Margin="-12,0,0,0" Orientation="Vertical">                                
+                                <HyperlinkButton Content="Windows UI Library" NavigateUri="https://aka.ms/winui" />
+                                <HyperlinkButton Content="Windows Community Toolkit" NavigateUri="https://github.com/CommunityToolkit/WindowsCommunityToolkit" />                                
+                            </StackPanel>
+                        </labs:SettingsCard>
+                        <labs:SettingsCard
+                            HorizontalContentAlignment="Left"
+                            ContentAlignment="Vertical"
+                            Header="ESTE CÓDIGO E INFORMAÇÕES SÃO FORNECIDOS 'NO ESTADO EM QUE SE ENCONTRAM', SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO A, GARANTIAS IMPLÍCITAS DE COMERCIALIZAÇÃO E/OU ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA.">                            
+                        </labs:SettingsCard>
+                    </labs:SettingsExpander.Items>
+                </labs:SettingsExpander>
             </StackPanel>
         </ScrollViewer>    
     </Grid>

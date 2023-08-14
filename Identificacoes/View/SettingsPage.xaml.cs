@@ -1,8 +1,8 @@
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
-
-
-
+using System;
+using Windows.System;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -15,9 +15,6 @@ namespace Identificacoes.View
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
-
-
-
         public SettingsPage()
         {
             this.InitializeComponent();
@@ -50,6 +47,15 @@ namespace Identificacoes.View
                     default: frameworkElement.RequestedTheme = ElementTheme.Default; break;
                 }
             }
+
+            var peer = FrameworkElementAutomationPeer.FromElement(sender as UIElement);
+            peer.RaiseNotificationEvent(AutomationNotificationKind.ActionCompleted,
+                                        AutomationNotificationProcessing.ImportantMostRecent, $"Theme changed to {ElementTheme.Light}", "ThemeChangedNotificationActivityId");
+
+        }
+        private async void bugRequestCard_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/edenalencar/Identificacoes/issues"));
 
         }
     }

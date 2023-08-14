@@ -26,6 +26,7 @@ namespace Identificacoes
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             Window = new View.MainWindow();
+            Window.ExtendsContentIntoTitleBar = true;
             Window.Activate();
         }
 

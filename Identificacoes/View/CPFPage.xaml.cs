@@ -16,8 +16,8 @@ namespace Identificacoes.View
     public sealed partial class CPFPage : Page
     {
         public CPFPage()
-        {            
-            this.InitializeComponent();
+        {           
+            this.InitializeComponent();            
         }
 
         private void Gerar_CPF(object sender, RoutedEventArgs e)
