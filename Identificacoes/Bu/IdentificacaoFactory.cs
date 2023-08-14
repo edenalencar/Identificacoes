@@ -34,6 +34,7 @@ namespace Identificacoes.Bu
             _ident.Add(Constantes.IE_RO, new IdentificacaoIeRo());
             _ident.Add(Constantes.IE_RR, new IdentificacaoIeRr());
             _ident.Add(Constantes.IE_SP, new IdentificacaoIeSp());
+            _ident.Add(Constantes.IE_SC, new IdentificacaoIeSc());
         }
 
         public Identificacao GetIdentificacao(string tipoIdentificacao)
