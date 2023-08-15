@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Identificacoes.Util;
+using Microsoft.UI.Xaml;
+using Windows.Storage;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -14,9 +16,11 @@ namespace Identificacoes
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+        /// 
+
         public App()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();
         }
 
         /// <summary>
@@ -28,8 +32,28 @@ namespace Identificacoes
             Window = new View.MainWindow();
             Window.ExtendsContentIntoTitleBar = true;
             Window.Activate();
+
+            string temaSalvo = ApplicationData.Current.LocalSettings.Values[Constantes.TemaAppSelecionado]?.ToString();
+            if (App.Window?.Content is FrameworkElement frameworkElement)
+            {
+                switch (temaSalvo)
+                {
+                    case Constantes.Light:
+                        frameworkElement.RequestedTheme = ElementTheme.Light;
+                        break;
+                    case Constantes.Dark:
+                        frameworkElement.RequestedTheme = ElementTheme.Dark;
+                        break;
+                    default:
+                        frameworkElement.RequestedTheme = ElementTheme.Default;
+                        break;
+                }
+            }
+
         }
 
-        public static Window? Window { get; private set; }        
+        public static Window? Window { get; private set; }
     }
+
+
 }

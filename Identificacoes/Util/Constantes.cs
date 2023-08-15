@@ -31,5 +31,10 @@
         public const string IE_SE = "IE-SE";
         public const string IE_SP = "IE-SP";
         public const string IE_TO = "IE-TO";
+
+        //Preferências
+        public const string TemaAppSelecionado = "TemaAppSelecionado";
+        public const string Light = "Light";
+        public const string Dark = "Dark";
     }
 }
