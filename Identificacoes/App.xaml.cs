@@ -30,8 +30,8 @@ namespace Identificacoes
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             Window = new View.MainWindow();
-            Window.ExtendsContentIntoTitleBar = true;
-            Window.Activate();
+            Window.ExtendsContentIntoTitleBar = true;            
+            Window.Activate();          
 
             string temaSalvo = ApplicationData.Current.LocalSettings.Values[Constantes.TemaAppSelecionado]?.ToString();
             if (App.Window?.Content is FrameworkElement frameworkElement)
@@ -42,7 +42,7 @@ namespace Identificacoes
                         frameworkElement.RequestedTheme = ElementTheme.Light;
                         break;
                     case Constantes.Dark:
-                        frameworkElement.RequestedTheme = ElementTheme.Dark;
+                        frameworkElement.RequestedTheme = ElementTheme.Dark;                        
                         break;
                     default:
                         frameworkElement.RequestedTheme = ElementTheme.Default;
@@ -54,6 +54,4 @@ namespace Identificacoes
 
         public static Window? Window { get; private set; }
     }
-
-
 }
