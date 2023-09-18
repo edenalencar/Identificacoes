@@ -94,8 +94,8 @@
                                 Text="git clone https://github.com/edenalencar/Identificacoes" />
                         </labs:SettingsCard>
                         <labs:SettingsCard
-                            x:Name="bugRequestCard"
-                            Click="bugRequestCard_Click"
+                            x:Name="issues"
+                            Click="issues_Click"
                             Header="Registrar um bug ou solicitar novo recurso"
                             IsClickEnabled="True">
                             <labs:SettingsCard.ActionIcon>
