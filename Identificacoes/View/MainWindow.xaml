@@ -6,13 +6,30 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
-    <NavigationView x:Name="navView" SelectionFollowsFocus="Enabled" SelectionChanged="navView_SelectionChanged"  Background="Transparent">
-        <NavigationView.MenuItems>
-            <NavigationViewItem Content="CPF" Tag="CPF" x:Name="NavItem_CPF" IsSelected="True"/>
-            <NavigationViewItem Content="CNPJ" Tag="CNPJ" x:Name="NavItem_CNPJ"/>
-            <NavigationViewItem Content="Inscrição Estadual" Tag="IE"  x:Name="NavItem_IE"/>
-        </NavigationView.MenuItems>
-        <Frame x:Name="contentFrame"/>
-    </NavigationView>
+    <Grid ColumnDefinitions="*,Auto" RowDefinitions="32,*">
+        <StackPanel x:Name="AppTitleBar" 
+                    Grid.Row="0" 
+                    Grid.Column="0" 
+                    Orientation="Horizontal"
+                    Background="{ThemeResource AppBarBackgroundThemeBrush}">
+            <Image Source="/Assets/LargeTile.scale-400.png"/>
+            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="Identificações" TextWrapping="NoWrap"/>
+        </StackPanel>
+        <Border
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="10"
+            Padding="10"            
+            BorderThickness="1">
+            <NavigationView x:Name="navView" SelectionFollowsFocus="Enabled" SelectionChanged="navView_SelectionChanged"  Background="Transparent" IsBackButtonVisible="Collapsed">
+                <NavigationView.MenuItems>
+                    <NavigationViewItem Content="CPF" Tag="CPF" x:Name="NavItem_CPF" IsSelected="True"/>
+                    <NavigationViewItem Content="CNPJ" Tag="CNPJ" x:Name="NavItem_CNPJ"/>
+                    <NavigationViewItem Content="Inscrição Estadual" Tag="IE"  x:Name="NavItem_IE"/>
+                </NavigationView.MenuItems>
+                <Frame x:Name="contentFrame"/>
+            </NavigationView>
+        </Border>
+    </Grid>
 </Window>

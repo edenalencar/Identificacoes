@@ -19,6 +19,7 @@ namespace Identificacoes.View
         {
             this.InitializeComponent();
             SystemBackdrop = new MicaBackdrop() { Kind = MicaKind.BaseAlt };
+            SetTitleBar(AppTitleBar);
         }
 
         private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
