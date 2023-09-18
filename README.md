@@ -1,6 +1,6 @@
 ![icone](https://user-images.githubusercontent.com/7075481/117592396-b9cfe480-b10e-11eb-9e74-f039b1b5a100.png)
 
-# Identificacoes
+# Identificações
 É uma ferramenta para equipe de QA e desenvolvedores que precisavam de testar usando identificações utilizadas no Brasil como CPF, CNPJ e IE.
 
 ![Captura de tela 2023-09-18 204810](https://github.com/edenalencar/Identificacoes/assets/7075481/ee1e0aea-dbcd-42c5-b829-a44af099870f)
