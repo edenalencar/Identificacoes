@@ -23,7 +23,7 @@ namespace Identificacoes.Bu
         {
             for (int i = 0; i < 10; i++)
             {
-                identificacaoModel.Nucleo += GerarNumeroAleatorio().ToString();
+                identificacaoModel.Nucleo += GerarNumeroAleatorio();
             }
         }
 

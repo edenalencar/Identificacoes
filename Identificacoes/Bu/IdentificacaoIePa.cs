@@ -25,7 +25,7 @@ namespace Identificacoes.Bu
             identificacaoModel.Nucleo = "15";
             for (int i = 0; i < 6; i++)
             {
-                identificacaoModel.Nucleo += GerarNumeroAleatorio().ToString();
+                identificacaoModel.Nucleo += GerarNumeroAleatorio();
             }
         }
 
