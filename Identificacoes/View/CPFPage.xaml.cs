@@ -23,10 +23,10 @@ namespace Identificacoes.View
         private void Gerar_CPF(object sender, RoutedEventArgs e)
         {
             var builder = new StringBuilder();
-            for (int i = 0; i < quantidade.Value; i++)
+            for (int i = 0; i < Quantidade.Value; i++)
             {
                 var identificacaoCPF = IdentificacaoFactory.GetInstance().GetIdentificacao(Constantes.CPF);
-                if ((bool)formatado.IsChecked)
+                if ((bool)Formatado.IsChecked)
                 {
                     builder.Append(identificacaoCPF.ObterIdentificacaoFormatada()+"\n");
                 }
@@ -35,15 +35,21 @@ namespace Identificacoes.View
                     builder.Append(identificacaoCPF.ObterIdentificacao() + "\n");
                 }
             }
-            resultado.Text = builder.ToString();
+            Resultado.Text = builder.ToString();
         }
 
         private void Copiar_Resultado(object sender, RoutedEventArgs e)
         {
             DataPackage package = new DataPackage();
-            package.SetText(resultado.Text);
+            package.SetText(Resultado.Text);
             Clipboard.SetContent(package);
         }
-        
+
+        public string quantidade { get => Constantes.Quantidade; }
+        public string formatado { get => Constantes.Formatado; }        
+        public string gerar { get => Constantes.Gerar; }
+        public string CPF  { get => Constantes.CPF; }
+
+
     }
 }

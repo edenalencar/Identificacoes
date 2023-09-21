@@ -72,5 +72,12 @@ namespace Identificacoes.View
             package.SetText(Resultado.Text);
             Clipboard.SetContent(package);
         }
+
+        
+        public string quantidade  { get => Constantes.Quantidade; }
+        public string formatado { get => Constantes.Formatado; }
+        public string filiais { get => Constantes.Filiais; }
+        public string gerar { get => Constantes.Gerar; }
+        public string CNPJ { get => Constantes.CNPJ; }
     }
 }

@@ -1,4 +1,5 @@
 using Identificacoes.Bu;
+using Identificacoes.Util;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -75,5 +76,10 @@ namespace Identificacoes.View
                     new Tuple<string,string>("SE","Sergipe"),
                     new Tuple<string,string>("TO","Tocantins")
             };
+
+        public string quantidade { get => Constantes.Quantidade; }
+        public string formatado { get => Constantes.Formatado; }        
+        public string gerar { get => Constantes.Gerar; }
+        public string IE { get => Constantes.IE; }
     }
 }

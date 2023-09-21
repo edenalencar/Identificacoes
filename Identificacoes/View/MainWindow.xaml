@@ -24,9 +24,9 @@
             BorderThickness="1">
             <NavigationView x:Name="navView" SelectionFollowsFocus="Enabled" SelectionChanged="navView_SelectionChanged"  Background="Transparent" IsBackButtonVisible="Collapsed">
                 <NavigationView.MenuItems>
-                    <NavigationViewItem Content="CPF" Tag="CPF" x:Name="NavItem_CPF" IsSelected="True"/>
-                    <NavigationViewItem Content="CNPJ" Tag="CNPJ" x:Name="NavItem_CNPJ"/>
-                    <NavigationViewItem Content="Inscrição Estadual" Tag="IE"  x:Name="NavItem_IE"/>
+                    <NavigationViewItem Content="{x:Bind CPF}" Tag="{x:Bind CPF}" x:Name="NavItem_CPF" IsSelected="True"/>
+                    <NavigationViewItem Content="{x:Bind CNPJ}" Tag="{x:Bind CNPJ}" x:Name="NavItem_CNPJ"/>
+                    <NavigationViewItem Content="{x:Bind IE}" Tag="{x:Bind IE}"  x:Name="NavItem_IE"/>
                 </NavigationView.MenuItems>
                 <Frame x:Name="contentFrame"/>
             </NavigationView>

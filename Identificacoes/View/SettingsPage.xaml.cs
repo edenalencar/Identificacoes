@@ -59,5 +59,15 @@ namespace Identificacoes.View
             await Launcher.LaunchUriAsync(new Uri("https://github.com/edenalencar/Identificacoes/issues"));
 
         }
+        public string sobre = Constantes.Sobre;
+        public string configuracoes = Constantes.Configuracoes;
+        public string dark = Constantes.Dark;
+        public string light = Constantes.Light;
+        public string padrao = Constantes.Default;        
+        public string claro = Constantes.Claro;
+        public string escuro = Constantes.Escuro;
+        public string usarTemaPadrao = Constantes.UsarTemaPadra;
+        public string direitos = Constantes.Direitos;
+
     }
 }

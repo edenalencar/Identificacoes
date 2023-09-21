@@ -46,14 +46,14 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <TextBlock x:Name="PageHeader" Margin="36,24,36,0" Style="{StaticResource TitleTextBlockStyle}" Text="CPF" />
+        <TextBlock x:Name="PageHeader" Margin="36,24,36,0" Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind CPF}" />
         <ScrollViewer x:Name="contentSV" Grid.Row="1" Padding="36,0,36,0" IsTabStop="False" UseSystemFocusVisuals="False" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
             <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Padding="12">
-                <TextBox x:Name="resultado" AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap" AcceptsReturn="True" SelectionHighlightColor="Green" MinWidth="400" Height="200" IsReadOnly="True" TextAlignment="Center"/>
-                <NumberBox x:Name="quantidade" Header="Quantidade:" Value="1" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="100"/>
-                <CheckBox x:Name="formatado" Content="Formatado"/>
+                <TextBox x:Name="Resultado" AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap" AcceptsReturn="True" SelectionHighlightColor="Green" MinWidth="400" Height="200" IsReadOnly="True" TextAlignment="Center"/>
+                <NumberBox x:Name="Quantidade" Header="{x:Bind quantidade}" Value="1" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="100"/>
+                <CheckBox x:Name="Formatado" Content="{x:Bind formatado}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="7" Padding="12">
-                    <Button x:Name="Gerar" Content="Gerar" Style="{StaticResource AccentButtonStyle}" Click="Gerar_CPF"/>
+                    <Button x:Name="Gerar" Content="{x:Bind gerar}" Style="{StaticResource AccentButtonStyle}" Click="Gerar_CPF"/>
                     <Button x:Name="Copiar" Click="Copiar_Resultado" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center">

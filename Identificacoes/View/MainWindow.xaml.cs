@@ -1,3 +1,4 @@
+using Identificacoes.Util;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -51,5 +52,10 @@ namespace Identificacoes.View
 
             _ = contentFrame.Navigate(pageType);
         }
+
+        public string CPF {  get => Constantes.CPF;  }    
+        public string CNPJ { get => Constantes.CNPJ; }
+        public string IE { get => Constantes.IE; }
+        
     }
 }

@@ -51,7 +51,7 @@
             x:Name="PageHeader"
             Margin="36,24,36,0"
             Style="{StaticResource TitleTextBlockStyle}"
-            Text="Configurações" />
+            Text="{x:Bind configuracoes}" />
         <ScrollViewer
             x:Name="contentSV"
             Grid.Row="1"
@@ -71,14 +71,14 @@
                         <FontIcon Glyph="&#xE790;" />
                     </labs:SettingsCard.HeaderIcon>
                     <ComboBox x:Name="Tema" AutomationProperties.AutomationId="themeModeComboBox" SelectionChanged="themeMode_SelectionChanged">
-                        <ComboBoxItem x:Name="Claro" Content="Claro" Tag="Light"/>
-                        <ComboBoxItem x:Name="Escuro" Content="Escuro" Tag="Dark" />
-                        <ComboBoxItem x:Name="Padrao" Content="Usar configuração do sistema" Tag="Default"/>
+                        <ComboBoxItem x:Name="Claro" Content="{x:Bind claro}" Tag="{x:Bind light}"/>
+                        <ComboBoxItem x:Name="Escuro" Content="{x:Bind escuro}" Tag="{x:Bind dark}" />
+                        <ComboBoxItem x:Name="Padrao" Content="{x:Bind usarTemaPadrao}" Tag="{x:Bind padrao}"/>
                     </ComboBox>
                 </labs:SettingsCard>         
 
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Sobre" />
-                <labs:SettingsExpander Description="@2023 Éden Alencar. Todos os direitos reservados." Header="Identificações">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{x:Bind sobre}" />
+                <labs:SettingsExpander Description="{x:Bind direitos}" Header="Identificações">
                     <labs:SettingsExpander.HeaderIcon>
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Tiles/SmallTile-sdk.png" />
                     </labs:SettingsExpander.HeaderIcon>
