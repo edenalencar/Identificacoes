@@ -54,7 +54,7 @@ namespace Identificacoes.View
                 ApplicationData.Current.LocalSettings.Values[Constantes.TemaAppSelecionado] = frameworkElement.RequestedTheme.ToString();
             }
         }
-        private async void issues_Click(object sender, RoutedEventArgs e)
+        private async void requistarNovoRecurso_click(object sender, RoutedEventArgs e)
         {
             await Launcher.LaunchUriAsync(new Uri("https://github.com/edenalencar/Identificacoes/issues"));
 

@@ -95,7 +95,7 @@
                         </labs:SettingsCard>
                         <labs:SettingsCard
                             x:Name="issues"
-                            Click="issues_Click"
+                            Click="requistarNovoRecurso_click"
                             Header="Registrar um bug ou solicitar novo recurso"
                             IsClickEnabled="True">
                             <labs:SettingsCard.ActionIcon>
