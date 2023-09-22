@@ -1,6 +1,6 @@
-![icone](https://user-images.githubusercontent.com/7075481/117592396-b9cfe480-b10e-11eb-9e74-f039b1b5a100.png)
+[![.NET 6 WinUI 3 CI](https://github.com/edenalencar/Identificacoes/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/edenalencar/Identificacoes/actions/workflows/dotnet-desktop.yml)
 
-[![Actions Status](https://github.com/edenalencar/Identificacoes/workflows/CI/badge.svg)](https://github.com/edenalencar/Identificacoes/actions)
+![icone](https://user-images.githubusercontent.com/7075481/117592396-b9cfe480-b10e-11eb-9e74-f039b1b5a100.png)
 
 # Identificações
 É uma ferramenta para equipe de QA e desenvolvedores que precisavam de testar usando identificações utilizadas no Brasil como CPF, CNPJ e IE.
