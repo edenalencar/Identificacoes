@@ -15,4 +15,6 @@
 * Gera Inscrição Estadual de todas as UFs
 
 # Instalação
-Em breve
+<a href="https://apps.microsoft.com/store/detail/9PJR7TBTZKR1?launch=true&mode=mini">
+	<img src="https://get.microsoft.com/images/pt-BR%20dark.svg"/>
+</a>
