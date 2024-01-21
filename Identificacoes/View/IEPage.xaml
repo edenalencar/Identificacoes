@@ -46,20 +46,20 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <TextBlock x:Name="PageHeader" Margin="36,24,36,0" Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind IE}" />
+        <TextBlock x:Name="PageHeader" Margin="36,24,36,0" Style="{StaticResource TitleTextBlockStyle}" x:Uid="IE" />
         <ScrollViewer x:Name="contentSV" Grid.Row="1" Padding="36,0,36,0" IsTabStop="False" UseSystemFocusVisuals="False" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
             <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Padding="12">
                 <TextBox x:Name="Resultado" AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap" AcceptsReturn="True" SelectionHighlightColor="Green" MinWidth="400" Height="200" IsReadOnly="True" TextAlignment="Center"/>
                 <ComboBox x:Name="ListaUFs" ItemsSource="{x:Bind UFs}" Header="UF" Width="200" DisplayMemberPath="Item2"/>
-                <NumberBox x:Name="Quantidade" Header="{x:Bind quantidade}" Value="1" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="100"/>
-                <CheckBox x:Name="Formatado" Content="{x:Bind formatado}"/>
+                <NumberBox x:Name="Quantidade" x:Uid="Quantidade" Value="1" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="100"/>
+                <CheckBox x:Name="Formatado" x:Uid="Formatado"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="7" Padding="12">
-                    <Button x:Name="Gerar" Content="{x:Bind gerar}" Style="{StaticResource AccentButtonStyle}" Click="Gerar_IE"/>
+                    <Button x:Name="Gerar" x:Uid="Gerar" Style="{StaticResource AccentButtonStyle}" Click="Gerar_IE"/>
                     <Button x:Name="Copiar" Click="Copiar_Resultado" >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Grid.Column="0" FontFamily="Segoe MDL2 Assets" Text="&#xE8C8;" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="Copiar" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1" x:Uid="Copiar" Margin="10,0,0,0" VerticalAlignment="Center" />
                             </StackPanel>
                         </Button.Content>
                     </Button>

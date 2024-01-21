@@ -1,5 +1,4 @@
 using Identificacoes.Bu;
-using Identificacoes.Util;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -16,18 +15,18 @@ namespace Identificacoes.View
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class IEPage : Page
-    {        
+    {
         public IEPage()
         {
             this.InitializeComponent();
         }
-        
+
         public void Gerar_IE(object sender, RoutedEventArgs e)
         {
-            var builder = new StringBuilder();            
+            var builder = new StringBuilder();
             for (int i = 0; i < Quantidade.Value; i++)
             {
-                var identificacao = IdentificacaoFactory.GetInstance().GetIdentificacao("IE-" +((Tuple<string, string>)ListaUFs.SelectedValue).Item1);
+                var identificacao = IdentificacaoFactory.GetInstance().GetIdentificacao("IE-" + ((Tuple<string, string>)ListaUFs.SelectedValue).Item1);
                 if ((bool)Formatado.IsChecked)
                 {
                     builder.Append(identificacao.ObterIdentificacaoFormatada() + "\n");
@@ -38,7 +37,7 @@ namespace Identificacoes.View
                 }
             }
             Resultado.Text = builder.ToString();
-            
+
         }
         public void Copiar_Resultado(object sender, RoutedEventArgs e)
         {
@@ -59,7 +58,7 @@ namespace Identificacoes.View
                     new Tuple<string,string>("GO","Goiás"),
                     new Tuple<string,string>("MA","Maranhão"),
                     new Tuple<string,string>("MT","Mato Grosso"),
-                    new Tuple<string,string>("MS","Mato Grosso do Sul"),                    
+                    new Tuple<string,string>("MS","Mato Grosso do Sul"),
                     new Tuple<string,string>("MG","Minas Gerais"),
                     new Tuple<string,string>("PA","Pará"),
                     new Tuple<string,string>("PB","Paraíba"),
@@ -72,14 +71,9 @@ namespace Identificacoes.View
                     new Tuple<string,string>("RO","Rondônia"),
                     new Tuple<string,string>("RR","Roraima"),
                     new Tuple<string,string>("SC","Santa Catariana"),
-                    new Tuple<string,string>("SP","São Paulo"),                    
+                    new Tuple<string,string>("SP","São Paulo"),
                     new Tuple<string,string>("SE","Sergipe"),
                     new Tuple<string,string>("TO","Tocantins")
             };
-
-        public string quantidade { get => Constantes.Quantidade; }
-        public string formatado { get => Constantes.Formatado; }        
-        public string gerar { get => Constantes.Gerar; }
-        public string IE { get => Constantes.IE; }
     }
 }

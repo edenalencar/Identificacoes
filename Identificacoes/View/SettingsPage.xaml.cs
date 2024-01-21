@@ -54,20 +54,20 @@ namespace Identificacoes.View
                 ApplicationData.Current.LocalSettings.Values[Constantes.TemaAppSelecionado] = frameworkElement.RequestedTheme.ToString();
             }
         }
-        private async void requistarNovoRecurso_click(object sender, RoutedEventArgs e)
+        private async void requisitarNovoRecurso_click(object sender, RoutedEventArgs e)
         {
             await Launcher.LaunchUriAsync(new Uri("https://github.com/edenalencar/Identificacoes/issues"));
 
         }
-        public string sobre = Constantes.Sobre;
-        public string configuracoes = Constantes.Configuracoes;
-        public string dark = Constantes.Dark;
-        public string light = Constantes.Light;
-        public string padrao = Constantes.Default;        
-        public string claro = Constantes.Claro;
-        public string escuro = Constantes.Escuro;
-        public string usarTemaPadrao = Constantes.UsarTemaPadra;
-        public string direitos = Constantes.Direitos;
 
+        public string DireitosTexto
+        {
+            get
+            {
+                var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse();
+                var direitosTexto = resourceLoader.GetString("Direitos/Description");
+                return string.Format(direitosTexto, DateTime.Now.Year);
+            }
+        }
     }
 }

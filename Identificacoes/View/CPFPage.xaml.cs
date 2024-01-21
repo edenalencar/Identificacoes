@@ -16,8 +16,8 @@ namespace Identificacoes.View
     public sealed partial class CPFPage : Page
     {
         public CPFPage()
-        {           
-            this.InitializeComponent();            
+        {
+            this.InitializeComponent();
         }
 
         private void Gerar_CPF(object sender, RoutedEventArgs e)
@@ -28,7 +28,7 @@ namespace Identificacoes.View
                 var identificacaoCPF = IdentificacaoFactory.GetInstance().GetIdentificacao(Constantes.CPF);
                 if ((bool)Formatado.IsChecked)
                 {
-                    builder.Append(identificacaoCPF.ObterIdentificacaoFormatada()+"\n");
+                    builder.Append(identificacaoCPF.ObterIdentificacaoFormatada() + "\n");
                 }
                 else
                 {
@@ -44,12 +44,5 @@ namespace Identificacoes.View
             package.SetText(Resultado.Text);
             Clipboard.SetContent(package);
         }
-
-        public string quantidade { get => Constantes.Quantidade; }
-        public string formatado { get => Constantes.Formatado; }        
-        public string gerar { get => Constantes.Gerar; }
-        public string CPF  { get => Constantes.CPF; }
-
-
     }
 }

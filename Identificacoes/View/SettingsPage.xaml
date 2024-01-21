@@ -51,7 +51,7 @@
             x:Name="PageHeader"
             Margin="36,24,36,0"
             Style="{StaticResource TitleTextBlockStyle}"
-            Text="{x:Bind configuracoes}" />
+            x:Uid="Configuracoes" />
         <ScrollViewer
             x:Name="contentSV"
             Grid.Row="1"
@@ -71,14 +71,14 @@
                         <FontIcon Glyph="&#xE790;" />
                     </labs:SettingsCard.HeaderIcon>
                     <ComboBox x:Name="Tema" AutomationProperties.AutomationId="themeModeComboBox" SelectionChanged="themeMode_SelectionChanged">
-                        <ComboBoxItem x:Name="Claro" Content="{x:Bind claro}" Tag="{x:Bind light}"/>
-                        <ComboBoxItem x:Name="Escuro" Content="{x:Bind escuro}" Tag="{x:Bind dark}" />
-                        <ComboBoxItem x:Name="Padrao" Content="{x:Bind usarTemaPadrao}" Tag="{x:Bind padrao}"/>
+                        <ComboBoxItem x:Name="Claro" x:Uid="Light"/>
+                        <ComboBoxItem x:Name="Escuro" x:Uid="Dark" />
+                        <ComboBoxItem x:Name="Padrao" x:Uid="Default"/>
                     </ComboBox>
                 </labs:SettingsCard>         
 
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{x:Bind sobre}" />
-                <labs:SettingsExpander Description="{x:Bind direitos}" Header="Identificações">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" x:Uid="Sobre" />
+                <labs:SettingsExpander Description="{x:Bind DireitosTexto}" x:Uid="NomeAplicacao">
                     <labs:SettingsExpander.HeaderIcon>
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Tiles/SmallTile-sdk.png" />
                     </labs:SettingsExpander.HeaderIcon>
@@ -87,7 +87,7 @@
                         IsTextSelectionEnabled="True"
                         Text="0.1.0" />
                     <labs:SettingsExpander.Items>
-                        <labs:SettingsCard Header="Para clonar esse repositório">
+                        <labs:SettingsCard x:Uid="Clone">
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 IsTextSelectionEnabled="True"
@@ -95,8 +95,8 @@
                         </labs:SettingsCard>
                         <labs:SettingsCard
                             x:Name="issues"
-                            Click="requistarNovoRecurso_click"
-                            Header="Registrar um bug ou solicitar novo recurso"
+                            Click="requisitarNovoRecurso_click"
+                            x:Uid="Solicitacao"
                             IsClickEnabled="True">
                             <labs:SettingsCard.ActionIcon>
                                 <FontIcon Glyph="&#xE8A7;" />
@@ -105,7 +105,7 @@
                         <labs:SettingsCard
                             HorizontalContentAlignment="Left"
                             ContentAlignment="Vertical"
-                            Header="Dependências e referências">
+                            x:Uid="Referencia">
                             <StackPanel Margin="-12,0,0,0" Orientation="Vertical">                                
                                 <HyperlinkButton Content="Windows UI Library" NavigateUri="https://aka.ms/winui" />
                                 <HyperlinkButton Content="Windows Community Toolkit" NavigateUri="https://github.com/CommunityToolkit/WindowsCommunityToolkit" />                                
@@ -114,7 +114,7 @@
                         <labs:SettingsCard
                             HorizontalContentAlignment="Left"
                             ContentAlignment="Vertical"
-                            Header="ESTE CÓDIGO E INFORMAÇÕES SÃO FORNECIDOS 'NO ESTADO EM QUE SE ENCONTRAM', SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO A, GARANTIAS IMPLÍCITAS DE COMERCIALIZAÇÃO E/OU ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA.">                            
+                            x:Uid="SettingsCard">                            
                         </labs:SettingsCard>
                     </labs:SettingsExpander.Items>
                 </labs:SettingsExpander>

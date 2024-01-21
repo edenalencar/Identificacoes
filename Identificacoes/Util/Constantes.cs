@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Identificacoes.Util
+﻿namespace Identificacoes.Util
 {
     class Constantes
     {
@@ -35,25 +33,11 @@ namespace Identificacoes.Util
         public const string IE_SP = "IE-SP";
         public const string IE_TO = "IE-TO";
 
-        public const string Quantidade = "Quantidade";
-        public const string Formatado = "Formatado";
-        public const string Filiais = "Filiais";
-        public const string Gerar = "Gerar";
-        public const string Copiar = "Copiar";
-
-
-
         //Preferências
         public const string TemaAppSelecionado = "TemaAppSelecionado";
         public const string Light = "Light";
         public const string Dark = "Dark";
         public const string Default = "Default";
-        public const string Claro = "Claro";
-        public const string Escuro = "Escuro";
-        public const string UsarTemaPadra = "Usar configuração do sistema";
-        public const string Sobre = "Sobre";
-        public static string Direitos = $"@{DateTime.Now.Year} Éden Alencar.Todos os direitos reservados.";
-        public const string Configuracoes = "Configurações";
 
     }
 }
