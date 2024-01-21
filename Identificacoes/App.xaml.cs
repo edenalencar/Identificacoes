@@ -1,5 +1,12 @@
 ﻿using Identificacoes.Util;
+using Identificacoes.View;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
+using Microsoft.Windows.AppLifecycle;
+using Microsoft.Windows.AppNotifications;
+using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Windows.Storage;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -30,8 +37,26 @@ namespace Identificacoes
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             Window = new View.MainWindow();
-            Window.ExtendsContentIntoTitleBar = true;            
-            Window.Activate();          
+            Window.ExtendsContentIntoTitleBar = true;
+            Window.Activate();
+
+            // To ensure all Notification handling happens in this process instance, register for
+            // NotificationInvoked before calling Register(). Without this a new process will
+            // be launched to handle the notification.
+            AppNotificationManager notificationManager = AppNotificationManager.Default;
+            notificationManager.NotificationInvoked += NotificationManager_NotificationInvoked;
+            notificationManager.Register();
+
+            var activatedArgs = Microsoft.Windows.AppLifecycle.AppInstance.GetCurrent().GetActivatedEventArgs();
+            var activationKind = activatedArgs.Kind;
+            if (activationKind != ExtendedActivationKind.AppNotification)
+            {
+                LaunchAndBringToForegroundIfNeeded();
+            }
+            else
+            {
+                HandleNotification((AppNotificationActivatedEventArgs)activatedArgs.Data);
+            }
 
             string temaSalvo = ApplicationData.Current.LocalSettings.Values[Constantes.TemaAppSelecionado]?.ToString();
             if (App.Window?.Content is FrameworkElement frameworkElement)
@@ -42,7 +67,7 @@ namespace Identificacoes
                         frameworkElement.RequestedTheme = ElementTheme.Light;
                         break;
                     case Constantes.Dark:
-                        frameworkElement.RequestedTheme = ElementTheme.Dark;                        
+                        frameworkElement.RequestedTheme = ElementTheme.Dark;
                         break;
                     default:
                         frameworkElement.RequestedTheme = ElementTheme.Default;
@@ -51,7 +76,87 @@ namespace Identificacoes
             }
 
         }
+        private void LaunchAndBringToForegroundIfNeeded()
+        {
+            if (Window == null)
+            {
+                Window = new MainWindow();
+                Window.Activate();
+
+                // Additionally we show using our helper, since if activated via a app notification, it doesn't
+                // activate the window correctly
+                WindowHelper.ShowWindow(Window);
+            }
+            else
+            {
+                WindowHelper.ShowWindow(Window);
+            }
+        }
+
+        private void NotificationManager_NotificationInvoked(AppNotificationManager sender, AppNotificationActivatedEventArgs args)
+        {
+            HandleNotification(args);
+        }
+
+        private void HandleNotification(AppNotificationActivatedEventArgs args)
+        {
+            // Use the dispatcher from the window if present, otherwise the app dispatcher
+            var dispatcherQueue = Window?.DispatcherQueue ?? DispatcherQueue.GetForCurrentThread();
+
+
+            dispatcherQueue.TryEnqueue(async delegate
+            {
+
+                switch (args.Arguments["action"])
+                {
+                    // Send a background message
+                    case "sendMessage":
+                        string message = args.UserInput["textBox"].ToString();
+                        // TODO: Send it
+
+                        // If the UI app isn't open
+                        if (Window == null)
+                        {
+                            // Close since we're done
+                            Process.GetCurrentProcess().Kill();
+                        }
+
+                        break;
+
+                    // View a message
+                    case "viewMessage":
+
+                        // Launch/bring window to foreground
+                        LaunchAndBringToForegroundIfNeeded();
+
+                        // TODO: Open the message
+                        break;
+                }
+            });
+        }
 
         public static Window? Window { get; private set; }
+    }
+
+    public static class WindowHelper
+    {
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        public static void ShowWindow(Window window)
+        {
+            // Bring the window to the foreground... first get the window handle...
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+
+            // Restore window if minimized... requires DLL import above
+            ShowWindow(hwnd, 0x00000009);
+
+            // And call SetForegroundWindow... requires DLL import above
+            SetForegroundWindow(hwnd);
+        }
     }
 }
