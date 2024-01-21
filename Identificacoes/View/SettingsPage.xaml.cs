@@ -2,6 +2,7 @@ using Identificacoes.Util;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.System;
 
@@ -67,6 +68,26 @@ namespace Identificacoes.View
                 var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse();
                 var direitosTexto = resourceLoader.GetString("Direitos/Description");
                 return string.Format(direitosTexto, DateTime.Now.Year);
+            }
+        }
+
+        public string Versao
+        {
+            get
+            {
+                // Obtém o objeto Package do aplicativo atual
+                Package package = Package.Current;
+
+                // Obtém o objeto PackageId que contém as informações do pacote
+                PackageId packageId = package.Id;
+
+                // Obtém a versão do pacote
+                PackageVersion version = packageId.Version;
+
+                // Converte a versão do pacote para uma string
+                string versionString = string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+
+                return versionString;
             }
         }
     }

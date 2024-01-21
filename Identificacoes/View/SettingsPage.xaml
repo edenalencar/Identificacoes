@@ -85,7 +85,7 @@
                     <TextBlock
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                         IsTextSelectionEnabled="True"
-                        Text="0.1.0" />
+                        Text="{x:Bind Versao}" />
                     <labs:SettingsExpander.Items>
                         <labs:SettingsCard x:Uid="Clone">
                             <TextBlock
