@@ -21,6 +21,10 @@ namespace Identificacoes.View
             this.InitializeComponent();
             SystemBackdrop = new MicaBackdrop() { Kind = MicaKind.BaseAlt };
             SetTitleBar(AppTitleBar);
+            
+            // Seleciona a aba CPF por padrão e navega para essa página
+            navView.SelectedItem = NavItem_CPF;
+            contentFrame.Navigate(typeof(CPFPage));
         }
 
         private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

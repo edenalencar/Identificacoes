@@ -2,69 +2,111 @@
 <Page
     x:Class="Identificacoes.View.IEPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Identificacoes.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="Transparent">
-    <Page.Resources>
-        <!--  These styles can be referenced to create a consistent SettingsPage layout  -->
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <!--  Spacing between cards  -->
-        <x:Double x:Key="SettingsCardSpacing">3</x:Double>
+    <ScrollViewer Padding="24">
+        <StackPanel>
+            <!-- Cabeçalho -->
+            <TextBlock Text="Gerador de Inscrição Estadual" Style="{StaticResource HeaderTextStyle}" />
+            
+            <!-- InfoBar com dicas -->
+            <InfoBar 
+                Title="Informação" 
+                Message="IEs são específicas para cada estado. Selecione a UF desejada." 
+                IsOpen="True" 
+                Severity="Informational"
+                Style="{StaticResource InfoBarStyle}"/>
 
-        <!--  Style (inc. the correct spacing) of a section header  -->
-        <Style
-    x:Key="SettingsSectionHeaderTextBlockStyle"
-    BasedOn="{StaticResource BodyStrongTextBlockStyle}"
-    TargetType="TextBlock">
-            <Style.Setters>
-                <Setter Property="Margin" Value="1,29,0,5" />
-            </Style.Setters>
-        </Style>
-    </Page.Resources>
-    <Grid x:Name="RootGrid" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="contentSV.Padding" Value="16,0" />
-                        <Setter Target="PageHeader.Margin" Value="16,48,0,0" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-        <TextBlock x:Name="PageHeader" Margin="36,24,36,0" Style="{StaticResource TitleTextBlockStyle}" x:Uid="IE" />
-        <ScrollViewer x:Name="contentSV" Grid.Row="1" Padding="36,0,36,0" IsTabStop="False" UseSystemFocusVisuals="False" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-            <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Padding="12">
-                <TextBox x:Name="Resultado" AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap" AcceptsReturn="True" SelectionHighlightColor="Green" MinWidth="400" Height="200" IsReadOnly="True" TextAlignment="Center"/>
-                <ComboBox x:Name="ListaUFs" ItemsSource="{x:Bind UFs}" Header="UF" Width="200" DisplayMemberPath="Item2"/>
-                <NumberBox x:Name="Quantidade" x:Uid="Quantidade" Value="1" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="100"/>
-                <CheckBox x:Name="Formatado" x:Uid="Formatado"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="7" Padding="12">
-                    <Button x:Name="Gerar" x:Uid="Gerar" Style="{StaticResource AccentButtonStyle}" Click="Gerar_IE"/>
-                    <Button x:Name="Copiar" Click="Copiar_Resultado" >
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock Grid.Column="0" FontFamily="Segoe MDL2 Assets" Text="&#xE8C8;" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" x:Uid="Copiar" Margin="10,0,0,0" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button.Content>
+            <!-- Card de Configurações -->
+            <Grid Style="{StaticResource CardStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Configurações" FontWeight="SemiBold" Margin="0,0,0,12" Grid.Row="0"/>
+                
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,8">
+                    <TextBlock Text="Estado:" VerticalAlignment="Center" Width="100"/>
+                    <ComboBox x:Name="Estados" Width="250" Margin="0,8">
+                        <ComboBoxItem Content="Acre" Tag="IE-AC"/>
+                        <ComboBoxItem Content="Alagoas" Tag="IE-AL"/>
+                        <ComboBoxItem Content="Amapá" Tag="IE-AP"/>
+                        <ComboBoxItem Content="Amazonas" Tag="IE-AM"/>
+                        <ComboBoxItem Content="Bahia" Tag="IE-BA"/>
+                        <ComboBoxItem Content="Ceará" Tag="IE-CE"/>
+                        <ComboBoxItem Content="Distrito Federal" Tag="IE-DF"/>
+                        <ComboBoxItem Content="Espírito Santo" Tag="IE-ES"/>
+                        <ComboBoxItem Content="Goiás" Tag="IE-GO"/>
+                        <ComboBoxItem Content="Maranhão" Tag="IE-MA"/>
+                        <ComboBoxItem Content="Mato Grosso" Tag="IE-MT"/>
+                        <ComboBoxItem Content="Mato Grosso do Sul" Tag="IE-MS"/>
+                        <ComboBoxItem Content="Minas Gerais" Tag="IE-MG"/>
+                        <ComboBoxItem Content="Pará" Tag="IE-PA"/>
+                        <ComboBoxItem Content="Paraíba" Tag="IE-PB"/>
+                        <ComboBoxItem Content="Paraná" Tag="IE-PR"/>
+                        <ComboBoxItem Content="Pernambuco" Tag="IE-PE"/>
+                        <ComboBoxItem Content="Piauí" Tag="IE-PI"/>
+                        <ComboBoxItem Content="Rio de Janeiro" Tag="IE-RJ"/>
+                        <ComboBoxItem Content="Rio Grande do Norte" Tag="IE-RN"/>
+                        <ComboBoxItem Content="Rio Grande do Sul" Tag="IE-RS"/>
+                        <ComboBoxItem Content="Rondônia" Tag="IE-RO"/>
+                        <ComboBoxItem Content="Roraima" Tag="IE-RR"/>
+                        <ComboBoxItem Content="Santa Catarina" Tag="IE-SC"/>
+                        <ComboBoxItem Content="São Paulo" Tag="IE-SP"/>
+                        <ComboBoxItem Content="Sergipe" Tag="IE-SE"/>
+                        <ComboBoxItem Content="Tocantins" Tag="IE-TO"/>
+                    </ComboBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,8">
+                    <TextBlock Text="Quantidade:" VerticalAlignment="Center" Width="100"/>
+                    <Slider x:Name="Quantidade" Style="{StaticResource ModernSliderStyle}"
+                        Minimum="1" Maximum="100" StepFrequency="1" Value="1" 
+                        TickPlacement="Outside" TickFrequency="10"/>
+                    <TextBlock Text="{Binding Value, ElementName=Quantidade, Mode=OneWay}" 
+                               Width="30" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                </StackPanel>
+                
+                <CheckBox x:Name="Formatado" Content="Formatado" 
+                          Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="True"/>
+                
+                <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,16,0,0" Spacing="8">
+                    <Button x:Name="Gerar" Click="Gerar_IE" Style="{StaticResource PrimaryButtonStyle}">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE117;" />
+                            <TextBlock Text="Gerar" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="Copiar" Click="Copiar_Resultado" Style="{StaticResource SecondaryButtonStyle}">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE8C8;" />
+                            <TextBlock Text="Copiar" />
+                        </StackPanel>
                     </Button>
                 </StackPanel>
-            </StackPanel>
-        </ScrollViewer>
-    </Grid>
+            </Grid>
+
+            <!-- Card de Resultado -->
+            <Grid Style="{StaticResource CardStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Resultado" FontWeight="SemiBold" Margin="0,0,0,12" Grid.Row="0"/>
+                
+                <TextBox x:Name="Resultado" Grid.Row="1" Style="{StaticResource ResultTextBoxStyle}" 
+                         PlaceholderText="Selecione um estado e clique em Gerar..."/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

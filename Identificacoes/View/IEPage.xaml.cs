@@ -1,4 +1,5 @@
-using Identificacoes.Bu;
+using Identificacoes.Controller;
+using Identificacoes.Model;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -16,64 +17,63 @@ namespace Identificacoes.View
     /// </summary>
     public sealed partial class IEPage : Page
     {
+        private List<UF> listaUFs;
+
         public IEPage()
         {
             this.InitializeComponent();
-        }
-
-        public void Gerar_IE(object sender, RoutedEventArgs e)
-        {
-            var builder = new StringBuilder();
-            for (int i = 0; i < Quantidade.Value; i++)
+            
+            // Inicializar a lista de UFs
+            listaUFs = UF.ListarTodas();
+            
+            // Selecionar o primeiro item por padrÃ£o
+            if (Estados.Items.Count > 0)
             {
-                var identificacao = IdentificacaoFactory.GetInstance().GetIdentificacao("IE-" + ((Tuple<string, string>)ListaUFs.SelectedValue).Item1);
-                if ((bool)Formatado.IsChecked)
-                {
-                    builder.Append(identificacao.ObterIdentificacaoFormatada() + "\n");
-                }
-                else
-                {
-                    builder.Append(identificacao.ObterIdentificacao() + "\n");
-                }
+                Estados.SelectedIndex = 0;
             }
-            Resultado.Text = builder.ToString();
+        }
 
-        }
-        public void Copiar_Resultado(object sender, RoutedEventArgs e)
+        private void Gerar_IE(object sender, RoutedEventArgs e)
         {
-            DataPackage package = new DataPackage();
-            package.SetText(Resultado.Text);
-            Clipboard.SetContent(package);
-        }
-        public List<Tuple<string, string>> UFs { get; } = new List<Tuple<string, string>>()
+            StringBuilder sb = new StringBuilder();
+            ComboBoxItem selectedItem = Estados.SelectedItem as ComboBoxItem;
+            
+            if (selectedItem != null)
             {
-                    new Tuple<string,string>("AC","Acre"),
-                    new Tuple<string,string>("AL","Alagoas"),
-                    new Tuple<string,string>("AP","Amapá"),
-                    new Tuple<string,string>("AM","Amazonas"),
-                    new Tuple<string,string>("BA","Bahia"),
-                    new Tuple<string,string>("CE","Ceará" ),
-                    new Tuple<string,string>("DF","Distrito Federal" ),
-                    new Tuple<string,string>("ES","Espírito Santo"),
-                    new Tuple<string,string>("GO","Goiás"),
-                    new Tuple<string,string>("MA","Maranhão"),
-                    new Tuple<string,string>("MT","Mato Grosso"),
-                    new Tuple<string,string>("MS","Mato Grosso do Sul"),
-                    new Tuple<string,string>("MG","Minas Gerais"),
-                    new Tuple<string,string>("PA","Pará"),
-                    new Tuple<string,string>("PB","Paraíba"),
-                    new Tuple<string,string>("PR","Paraná"),
-                    new Tuple<string,string>("PE","Pernambuco"),
-                    new Tuple<string,string>("PI","Piauí"),
-                    new Tuple<string,string>("RJ","Rio de Janeiro"),
-                    new Tuple<string,string>("RN","Rio Grande do Norte"),
-                    new Tuple<string,string>("RS","Rio Grande do Sul"),
-                    new Tuple<string,string>("RO","Rondônia"),
-                    new Tuple<string,string>("RR","Roraima"),
-                    new Tuple<string,string>("SC","Santa Catariana"),
-                    new Tuple<string,string>("SP","São Paulo"),
-                    new Tuple<string,string>("SE","Sergipe"),
-                    new Tuple<string,string>("TO","Tocantins")
-            };
+                string tag = selectedItem.Tag.ToString();
+                string estado = tag.Replace("IE-", "");
+                
+                // Obter a quantidade selecionada
+                int quantidade = (int)Quantidade.Value;
+                bool formatado = Formatado.IsChecked ?? false;
+                
+                // Gerar IEs
+                IEController ieController = new IEController();
+                for (int i = 0; i < quantidade; i++)
+                {
+                    string ie = ieController.Gerar(estado, formatado);
+                    sb.AppendLine(ie);
+                }
+                
+                Resultado.Text = sb.ToString();
+            }
+            else
+            {
+                Resultado.Text = "Selecione um estado para gerar a InscriÃ§Ã£o Estadual.";
+            }
+        }
+
+        private void Copiar_Resultado(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Resultado.Text))
+            {
+                // Criar um data package
+                var dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
+                dataPackage.SetText(Resultado.Text);
+                
+                // Copiar para a Ã¡rea de transferÃªncia
+                Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
+            }
+        }
     }
 }

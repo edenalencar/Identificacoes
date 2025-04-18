@@ -11,7 +11,6 @@ using Windows.System;
 
 namespace Identificacoes.View
 {
-
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -25,49 +24,52 @@ namespace Identificacoes.View
             switch (temaSalvo)
             {
                 case Constantes.Light:
-                    Tema.SelectedIndex = 0;
+                    LightTheme.IsChecked = true;
                     break;
                 case Constantes.Dark:
-                    Tema.SelectedIndex = 1;
+                    DarkTheme.IsChecked = true;
                     break;
                 default:
-                    Tema.SelectedIndex = 2;
+                    DefaultTheme.IsChecked = true;
                     break;
             }
         }
 
-        private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
+        private void ThemeRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (App.Window?.Content is FrameworkElement frameworkElement)
             {
-                switch (((Microsoft.UI.Xaml.Controls.ContentControl)Tema.SelectedValue).Tag)
+                RadioButton selectedTheme = sender as RadioButton;
+                if (selectedTheme != null)
                 {
-                    case Constantes.Light:
-                        frameworkElement.RequestedTheme = ElementTheme.Light;
-                        break;
-                    case Constantes.Dark:
-                        frameworkElement.RequestedTheme = ElementTheme.Dark;
-                        break;
-                    case "Default":
-                        frameworkElement.RequestedTheme = ElementTheme.Default;
-                        break;
+                    string tag = selectedTheme.Tag.ToString();
+                    switch (tag)
+                    {
+                        case Constantes.Light:
+                            frameworkElement.RequestedTheme = ElementTheme.Light;
+                            break;
+                        case Constantes.Dark:
+                            frameworkElement.RequestedTheme = ElementTheme.Dark;
+                            break;
+                        case "Default":
+                            frameworkElement.RequestedTheme = ElementTheme.Default;
+                            break;
+                    }
+                    ApplicationData.Current.LocalSettings.Values[Constantes.TemaAppSelecionado] = tag;
                 }
-                ApplicationData.Current.LocalSettings.Values[Constantes.TemaAppSelecionado] = frameworkElement.RequestedTheme.ToString();
             }
         }
+
         private async void requisitarNovoRecurso_click(object sender, RoutedEventArgs e)
         {
             await Launcher.LaunchUriAsync(new Uri("https://github.com/edenalencar/Identificacoes/issues"));
-
         }
 
         public string DireitosTexto
         {
             get
             {
-                var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse();
-                var direitosTexto = resourceLoader.GetString("Direitos/Description");
-                return string.Format(direitosTexto, DateTime.Now.Year);
+                return $"Â© {DateTime.Now.Year} Eden Alencar";
             }
         }
 
@@ -75,19 +77,11 @@ namespace Identificacoes.View
         {
             get
             {
-                // Obtém o objeto Package do aplicativo atual
+                // ObtÃ©m o objeto Package do aplicativo atual
                 Package package = Package.Current;
-
-                // Obtém o objeto PackageId que contém as informações do pacote
-                PackageId packageId = package.Id;
-
-                // Obtém a versão do pacote
-                PackageVersion version = packageId.Version;
-
-                // Converte a versão do pacote para uma string
-                string versionString = string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
-
-                return versionString;
+                // ObtÃ©m a versÃ£o do pacote
+                PackageVersion version = package.Id.Version;
+                return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
             }
         }
     }

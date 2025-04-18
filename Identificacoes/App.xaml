@@ -2,14 +2,15 @@
 <Application
     x:Class="Identificacoes.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Identificacoes">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <!-- Other merged dictionaries here -->
+                <!-- Mesclar o novo dicionário de recursos -->
+                <ResourceDictionary Source="/Styles/SharedStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

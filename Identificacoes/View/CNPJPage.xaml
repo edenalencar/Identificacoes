@@ -2,69 +2,81 @@
 <Page
     x:Class="Identificacoes.View.CNPJPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Identificacoes.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="Transparent">
-    <Page.Resources>
-        <!--  These styles can be referenced to create a consistent SettingsPage layout  -->
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <!--  Spacing between cards  -->
-        <x:Double x:Key="SettingsCardSpacing">3</x:Double>
+    <ScrollViewer Padding="24">
+        <StackPanel>
+            <!-- Cabeçalho -->
+            <TextBlock Text="Gerador de CNPJ" Style="{StaticResource HeaderTextStyle}" />
+            
+            <!-- InfoBar com dicas -->
+            <InfoBar 
+                Title="Dica" 
+                Message="CNPJs gerados são para fins de teste. Gere filiais a partir da mesma matriz." 
+                IsOpen="True" 
+                Severity="Informational"
+                Style="{StaticResource InfoBarStyle}"/>
 
-        <!--  Style (inc. the correct spacing) of a section header  -->
-        <Style
-        x:Key="SettingsSectionHeaderTextBlockStyle"
-        BasedOn="{StaticResource BodyStrongTextBlockStyle}"
-        TargetType="TextBlock">
-            <Style.Setters>
-                <Setter Property="Margin" Value="1,29,0,5" />
-            </Style.Setters>
-        </Style>
-    </Page.Resources>
-    <Grid x:Name="RootGrid" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="contentSV.Padding" Value="16,0" />
-                        <Setter Target="PageHeader.Margin" Value="16,48,0,0" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-        <TextBlock x:Name="PageHeader" Margin="36,24,36,0" Style="{StaticResource TitleTextBlockStyle}" x:Uid="CNPJ" />
-        <ScrollViewer x:Name="contentSV" Grid.Row="1" Padding="36,0,36,0" IsTabStop="False" UseSystemFocusVisuals="False" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-            <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Padding="12">
-                <TextBox x:Name="Resultado" AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap" AcceptsReturn="True" SelectionHighlightColor="Green" MinWidth="400" Height="200" IsReadOnly="True" TextAlignment="Center"/>
-                <NumberBox x:Name="Quantidade" x:Uid="Quantidade" Value="1" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="100"/>
-                <CheckBox x:Name="Formatado" x:Uid="Formatado"/>
-                <CheckBox x:Name="Filiais" x:Uid="Filiais"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="7" Padding="12">
-                    <Button x:Name="Gerar" x:Uid="Gerar" Style="{StaticResource AccentButtonStyle}" Click="Gerar_CNPJ"/>
-                    <Button x:Name="Copiar"  Click="Copiar_Resultado">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock Grid.Column="0" FontFamily="Segoe MDL2 Assets" Text="&#xE8C8;" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" x:Uid="Copiar" Margin="10,0,0,0" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button.Content>
+            <!-- Card de Configurações -->
+            <Grid Style="{StaticResource CardStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Configurações" FontWeight="SemiBold" Margin="0,0,0,12" Grid.Row="0"/>
+                
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,8">
+                    <TextBlock Text="Quantidade:" VerticalAlignment="Center" Width="100"/>
+                    <Slider x:Name="Quantidade" Style="{StaticResource ModernSliderStyle}"
+                        Minimum="1" Maximum="100" StepFrequency="1" Value="1" 
+                        TickPlacement="Outside" TickFrequency="10"/>
+                    <TextBlock Text="{Binding Value, ElementName=Quantidade, Mode=OneWay}" 
+                               Width="30" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                </StackPanel>
+                
+                <CheckBox x:Name="Formatado" Content="Formatado (xx.xxx.xxx/xxxx-xx)" 
+                          Grid.Row="2" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="True"/>
+                
+                <CheckBox x:Name="Filiais" Content="Gerar filiais" 
+                          Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"/>
+                
+                <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,16,0,0" Spacing="8">
+                    <Button x:Name="Gerar" Click="Gerar_CNPJ" Style="{StaticResource PrimaryButtonStyle}">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE117;" />
+                            <TextBlock Text="Gerar" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="Copiar" Click="Copiar_Resultado" Style="{StaticResource SecondaryButtonStyle}">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE8C8;" />
+                            <TextBlock Text="Copiar" />
+                        </StackPanel>
                     </Button>
                 </StackPanel>
-            </StackPanel>
-        </ScrollViewer>
-    </Grid>
+            </Grid>
+
+            <!-- Card de Resultado -->
+            <Grid Style="{StaticResource CardStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Resultado" FontWeight="SemiBold" Margin="0,0,0,12" Grid.Row="0"/>
+                
+                <TextBox x:Name="Resultado" Grid.Row="1" Style="{StaticResource ResultTextBoxStyle}" 
+                         PlaceholderText="Clique em Gerar para criar CNPJs..."/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </Page>
