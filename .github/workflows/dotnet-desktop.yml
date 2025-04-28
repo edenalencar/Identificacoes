@@ -1,4 +1,4 @@
-name: .NET 6 WinUI 3 CI
+name: .NET 8 WinUI 3 CI
 
 on:
   push:
@@ -12,12 +12,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'
 
     - name: Add NuGet package source
       run: |
