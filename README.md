@@ -20,6 +20,15 @@ Identificações é uma ferramenta moderna desenvolvida em .NET 8 e WinUI 3 para
 
 Com uma interface simples e intuitiva, você pode gerar rapidamente identificações válidas para uso em testes de software.
 
+## 📚 Documentação
+
+Todos os documentos do projeto estão disponíveis na pasta [docs](/docs):
+
+- [PRD - Product Requirements Document](/docs/PRD.md) - Requisitos e visão do produto
+- [TRD - Technical Requirements Document](/docs/TRD.md) - Requisitos técnicos e arquitetura
+- [FRD - Functional Requirements Document](/docs/FRD.md) - Requisitos funcionais detalhados
+- [User Stories e Epics](/docs/UserStories.md) - Histórias de usuário e épicos
+
 ## ✨ Capturas de Tela
 
 <div align="center">
