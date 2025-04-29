@@ -2,6 +2,8 @@
 using Identificacoes.View;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Windowing;
+using Microsoft.UI;
 using Microsoft.Windows.AppLifecycle;
 using Microsoft.Windows.AppNotifications;
 using System;
@@ -38,6 +40,18 @@ namespace Identificacoes
         {
             Window = new View.MainWindow();
             Window.ExtendsContentIntoTitleBar = true;
+            
+            // Configurar o ícone para a janela da aplicação
+            IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(Window);
+            WindowId windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(windowHandle);
+            AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            
+            // Definir o ícone da aplicação usando o caminho completo
+            string appIconPath = System.IO.Path.Combine(
+                Windows.ApplicationModel.Package.Current.InstalledLocation.Path, 
+                "Assets", "Square44x44Logo.scale.scale-200.png");
+            appWindow.SetIcon(appIconPath);
+            
             Window.Activate();
 
             // To ensure all Notification handling happens in this process instance, register for

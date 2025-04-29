@@ -61,10 +61,10 @@
                 
                 <StackPanel Grid.Row="1" Spacing="8">
                     <StackPanel Orientation="Horizontal" Spacing="12">
-                        <Image Source="/Assets/Square44x44Logo.scale-200.png" Width="44" Height="44"/>
+                        <Image Source="ms-appx:///Assets/Square44x44Logo.scale.scale-200.png" Width="44" Height="44"/>
                         <StackPanel>
                             <TextBlock Text="Identificações" FontWeight="SemiBold" FontSize="16"/>
-                            <TextBlock Text="Versão 1.2.0" Opacity="0.7"/>
+                            <TextBlock Text="{Binding Versao}" Opacity="0.7"/>
                         </StackPanel>
                     </StackPanel>
                     
