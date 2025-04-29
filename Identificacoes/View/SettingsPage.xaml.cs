@@ -64,6 +64,15 @@ namespace Identificacoes.View
         {
             await Launcher.LaunchUriAsync(new Uri("https://github.com/edenalencar/Identificacoes/issues"));
         }
+        
+        private async void AvaliarAplicativo_Click(object sender, RoutedEventArgs e)
+        {
+            // Marcar que o usuário escolheu avaliar para não mostrarmos o diálogo novamente
+            AppUsageTracker.SetUserHasRated(true);
+            
+            // Abrir a página de avaliação na Microsoft Store
+            await StoreService.OpenStoreReviewAsync();
+        }
 
         public string DireitosTexto
         {

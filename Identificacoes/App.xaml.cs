@@ -52,6 +52,9 @@ namespace Identificacoes
                 "Assets", "Square44x44Logo.scale.scale-200.png");
             appWindow.SetIcon(appIconPath);
             
+            // Rastrear o uso do aplicativo para fins de avaliação
+            AppUsageTracker.IncrementLaunchCount();
+            
             Window.Activate();
 
             // To ensure all Notification handling happens in this process instance, register for
@@ -117,10 +120,8 @@ namespace Identificacoes
             // Use the dispatcher from the window if present, otherwise the app dispatcher
             var dispatcherQueue = Window?.DispatcherQueue ?? DispatcherQueue.GetForCurrentThread();
 
-
-            dispatcherQueue.TryEnqueue(async delegate
+            dispatcherQueue.TryEnqueue(delegate
             {
-
                 switch (args.Arguments["action"])
                 {
                     // Send a background message
@@ -149,7 +150,7 @@ namespace Identificacoes
             });
         }
 
-        public static Window? Window { get; private set; }
+        public static Window Window { get; private set; }
     }
 
     public static class WindowHelper

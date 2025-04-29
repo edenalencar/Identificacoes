@@ -79,6 +79,13 @@
                     <HyperlinkButton NavigateUri="https://github.com/edenalencar/Identificacoes/issues" Margin="0,0,0,0">
                         <TextBlock Text="Reportar problemas"/>
                     </HyperlinkButton>
+                    
+                    <HyperlinkButton Click="AvaliarAplicativo_Click" Margin="0,4,0,0">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE735;" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                            <TextBlock Text="Avaliar este aplicativo"/>
+                        </StackPanel>
+                    </HyperlinkButton>
                 </StackPanel>
                 
                 <StackPanel Grid.Row="2" Margin="0,16,0,0">
