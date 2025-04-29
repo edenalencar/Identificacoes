@@ -34,9 +34,9 @@ Todos os documentos do projeto estão disponíveis na pasta [docs](/docs):
 <div align="center">
 <table>
   <tr>
-    <td><img src="Captura de tela 2023-09-21 202658.png" alt="Tela de CPF" width="250"/></td>
-    <td><img src="Captura de tela 2023-09-21 202718.png" alt="Tela de CNPJ" width="250"/></td>
-    <td><img src="Captura de tela 2023-09-21 202735.png" alt="Tela de IE" width="250"/></td>
+    <td><img src="Identificacoes/Assets/Screenshots/CPF.png" alt="Tela de CPF" width="250"/></td>
+    <td><img src="Identificacoes/Assets/Screenshots/CNPJ.png" alt="Tela de CNPJ" width="250"/></td>
+    <td><img src="Identificacoes/Assets/Screenshots/IE.png" alt="Tela de IE" width="250"/></td>
   </tr>
 </table>
 </div>
