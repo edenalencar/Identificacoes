@@ -31,7 +31,8 @@
                         SelectionChanged="navView_SelectionChanged"
                         IsSettingsVisible="False"
                         IsBackButtonVisible="Collapsed"
-                        PaneDisplayMode="Auto">
+                        PaneDisplayMode="Auto"
+                        HeaderTemplate="{x:Null}">
             <!-- Itens da navegação -->
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="NavItem_CPF" Content="CPF" Tag="cpf" Icon="ContactInfo" />
@@ -43,11 +44,6 @@
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem x:Name="NavItem_Settings" Content="Configurações" Icon="Setting" />
             </NavigationView.FooterMenuItems>
-            
-            <!-- Header da página -->
-            <NavigationView.Header>
-                <Ellipse Height="0" Width="0" />
-            </NavigationView.Header>
             
             <!-- Conteúdo da página -->
             <Frame x:Name="contentFrame" />
