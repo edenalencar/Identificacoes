@@ -77,7 +77,7 @@
                 </StackPanel>
                 
                 <CheckBox x:Name="Formatado" Content="Formatado" 
-                          Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="True"/>
+                          Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"/>
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,16,0,0" Spacing="8">
                     <Button x:Name="Gerar" Click="Gerar_IE" Style="{StaticResource PrimaryButtonStyle}">

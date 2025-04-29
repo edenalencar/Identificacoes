@@ -43,7 +43,7 @@
                 </StackPanel>
                 
                 <CheckBox x:Name="Formatado" Content="Formatado (xxx.xxx.xxx-xx)" 
-                          Grid.Row="2" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="True"/>
+                          Grid.Row="2" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"/>
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0,16,0,0" Spacing="8">
                     <Button x:Name="Gerar" Click="Gerar_CPF" Style="{StaticResource PrimaryButtonStyle}">

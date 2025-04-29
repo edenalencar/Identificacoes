@@ -44,7 +44,7 @@
                 </StackPanel>
                 
                 <CheckBox x:Name="Formatado" Content="Formatado (xx.xxx.xxx/xxxx-xx)" 
-                          Grid.Row="2" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="True"/>
+                          Grid.Row="2" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"/>
                 
                 <CheckBox x:Name="Filiais" Content="Gerar filiais" 
                           Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"/>
