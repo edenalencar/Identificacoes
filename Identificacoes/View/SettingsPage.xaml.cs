@@ -5,6 +5,7 @@ using System;
 using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.System;
+using Windows.ApplicationModel.DataTransfer;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -72,6 +73,20 @@ namespace Identificacoes.View
             
             // Abrir a página de avaliação na Microsoft Store
             await StoreService.OpenStoreReviewAsync();
+        }
+
+        private void CopiarEmail_Click(object sender, RoutedEventArgs e)
+        {
+            // Criar um data package para a área de transferência
+            var dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
+            dataPackage.SetText("contato@identificacoes.com.br");
+            Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
+            
+            // Feedback visual para o usuário
+            var flyout = new Flyout();
+            var textBlock = new TextBlock { Text = "E-mail copiado para a área de transferência!" };
+            flyout.Content = textBlock;
+            flyout.ShowAt((FrameworkElement)sender);
         }
 
         public string DireitosTexto
