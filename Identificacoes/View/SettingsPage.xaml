@@ -49,6 +49,70 @@
                 </Grid>
             </Grid>
             
+            <!-- Card de Acessibilidade -->
+            <Grid Style="{StaticResource CardStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Acessibilidade" FontWeight="SemiBold" Margin="0,0,0,12" Grid.Row="0"
+                           AutomationProperties.HeadingLevel="Level2"/>
+                
+                <StackPanel Grid.Row="1" Margin="0,0,0,12">
+                    <ToggleSwitch x:Name="AltoContrasteToggle" 
+                                 Header="Alto contraste" 
+                                 OffContent="Desativado" 
+                                 OnContent="Ativado"
+                                 Toggled="AltoContraste_Toggled"
+                                 AutomationProperties.Name="Alternar alto contraste"
+                                 AutomationProperties.HelpText="Ativa o modo de alto contraste para melhor visualização"/>
+                                 
+                    <TextBlock Text="Ative para melhorar a visualização em condições de baixa visibilidade" 
+                               Opacity="0.7" 
+                               TextWrapping="Wrap" 
+                               Margin="0,0,0,8"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="2" Margin="0,0,0,12">
+                    <Slider x:Name="TamanhoFonteSlider"
+                            Header="Tamanho da fonte"
+                            Minimum="100"
+                            Maximum="150"
+                            StepFrequency="10"
+                            Value="100"
+                            ValueChanged="TamanhoFonte_ValueChanged"
+                            AutomationProperties.Name="Ajustar tamanho da fonte"
+                            AutomationProperties.HelpText="Deslize para ajustar o tamanho da fonte do aplicativo entre 100% e 150%"/>
+                            
+                    <TextBlock Text="{x:Bind TamanhoFonteFormatado, Mode=OneWay}" 
+                               HorizontalAlignment="Right" 
+                               Margin="0,4,0,0"/>
+                               
+                    <TextBlock Text="Ajuste o tamanho da fonte para melhor leitura" 
+                               Opacity="0.7" 
+                               TextWrapping="Wrap" 
+                               Margin="0,8,0,0"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="3" Margin="0,0,0,0">
+                    <ToggleSwitch x:Name="DesativarAnimacoesToggle" 
+                                 Header="Desativar animações" 
+                                 OffContent="Não" 
+                                 OnContent="Sim"
+                                 Toggled="DesativarAnimacoes_Toggled"
+                                 AutomationProperties.Name="Desativar animações"
+                                 AutomationProperties.HelpText="Desativa as animações da interface para melhorar o desempenho e reduzir distrações visuais"/>
+                                 
+                    <TextBlock Text="Reduza o movimento na interface para diminuir distrações visuais" 
+                               Opacity="0.7" 
+                               TextWrapping="Wrap" 
+                               Margin="0,0,0,8"/>
+                </StackPanel>
+            </Grid>
+            
             <!-- Card de Sobre -->
             <Grid Style="{StaticResource CardStyle}">
                 <Grid.RowDefinitions>

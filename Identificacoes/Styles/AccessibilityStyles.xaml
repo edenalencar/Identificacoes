@@ -1,0 +1,136 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <!-- Recursos para modo de alto contraste -->
+        <ResourceDictionary x:Key="HighContrast">
+            <!-- Cores específicas para alto contraste -->
+            <SolidColorBrush x:Key="HighContrastBackgroundBrush" Color="Black"/>
+            <SolidColorBrush x:Key="HighContrastForegroundBrush" Color="White"/>
+            <SolidColorBrush x:Key="HighContrastAccentBrush" Color="Yellow"/>
+            <SolidColorBrush x:Key="HighContrastBorderBrush" Color="White"/>
+            <SolidColorBrush x:Key="HighContrastErrorBrush" Color="Red"/>
+            <SolidColorBrush x:Key="HighContrastSuccessBrush" Color="Lime"/>
+            <SolidColorBrush x:Key="HighContrastWarningBrush" Color="Orange"/>
+            
+            <!-- Estilos para cards em alto contraste -->
+            <Style x:Key="HighContrastCardStyle" TargetType="Grid">
+                <Setter Property="Background" Value="{StaticResource HighContrastBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{StaticResource HighContrastBorderBrush}" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="CornerRadius" Value="0" /> <!-- Removendo cantos arredondados para melhor visibilidade -->
+                <Setter Property="Padding" Value="16" />
+                <Setter Property="Margin" Value="0,0,0,24" /> <!-- Aumentando a margem para maior separação -->
+            </Style>
+            
+            <!-- Estilos para botões em alto contraste -->
+            <Style x:Key="HighContrastPrimaryButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource HighContrastAccentBrush}" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="BorderBrush" Value="{StaticResource HighContrastBorderBrush}" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Padding" Value="24,10" /> <!-- Aumentando o padding para melhor alvo de toque -->
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="MinWidth" Value="120" />
+                <Setter Property="MinHeight" Value="44" /> <!-- Garantindo altura mínima para alvo de toque adequado -->
+            </Style>
+            
+            <Style x:Key="HighContrastSecondaryButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="{StaticResource HighContrastForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{StaticResource HighContrastBorderBrush}" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Padding" Value="24,10" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="MinWidth" Value="120" />
+                <Setter Property="MinHeight" Value="44" />
+            </Style>
+            
+            <!-- Estilos para texto em alto contraste -->
+            <Style x:Key="HighContrastHeaderTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource HighContrastForegroundBrush}" />
+                <Setter Property="FontWeight" Value="Bold" /> <!-- Aumentando o peso da fonte para maior visibilidade -->
+                <Setter Property="FontSize" Value="26" /> <!-- Aumentando o tamanho da fonte -->
+                <Setter Property="Margin" Value="0,0,0,20" />
+            </Style>
+            
+            <!-- Estilo para o resultado em alto contraste -->
+            <Style x:Key="HighContrastResultTextBoxStyle" TargetType="TextBox">
+                <Setter Property="MinHeight" Value="200" />
+                <Setter Property="MaxHeight" Value="400" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="AcceptsReturn" Value="True" />
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="Foreground" Value="{StaticResource HighContrastForegroundBrush}" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="BorderBrush" Value="{StaticResource HighContrastBorderBrush}" />
+                <Setter Property="Padding" Value="16" /> <!-- Aumentando o padding para melhor espaçamento -->
+                <Setter Property="FontFamily" Value="Consolas" />
+                <Setter Property="FontSize" Value="16" /> <!-- Aumentando o tamanho da fonte para melhor legibilidade -->
+            </Style>
+            
+            <!-- Estilo para sliders em alto contraste -->
+            <Style x:Key="HighContrastSliderStyle" TargetType="Slider">
+                <Setter Property="MinWidth" Value="200" />
+                <Setter Property="Margin" Value="0,12" /> <!-- Aumentando a margem para melhor separação -->
+                <Setter Property="Foreground" Value="{StaticResource HighContrastAccentBrush}" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="{StaticResource HighContrastBorderBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+            </Style>
+            
+            <!-- Estilo para checkbox em alto contraste -->
+            <Style x:Key="HighContrastCheckBoxStyle" TargetType="CheckBox">
+                <Setter Property="Margin" Value="0,12" /> <!-- Aumentando a margem para melhor separação -->
+                <Setter Property="Foreground" Value="{StaticResource HighContrastForegroundBrush}" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="{StaticResource HighContrastBorderBrush}" />
+                <Setter Property="BorderThickness" Value="2" />
+            </Style>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    
+    <!-- Estilos para diferentes tamanhos de fonte (aplicados dinamicamente via código) -->
+    <Style x:Key="AccessibleTextBlockStyle" TargetType="TextBlock">
+        <!-- Estilo base que será modificado pelo código -->
+    </Style>
+    
+    <Style x:Key="AccessibleButtonTextStyle" TargetType="TextBlock">
+        <!-- Estilo base que será modificado pelo código -->
+    </Style>
+    
+    <Style x:Key="AccessibleHeaderTextStyle" TargetType="TextBlock">
+        <!-- Estilo base que será modificado pelo código -->
+    </Style>
+
+    <!-- Estilos para desativar animações -->
+    <Style x:Key="DisabledAnimationsStyle" TargetType="FrameworkElement">
+        <!-- Estilo global para desativar animações -->
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <TransitionCollection/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Estilo para TextBlock com animações desativadas -->
+    <Style x:Key="NoAnimationTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <TransitionCollection/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Estilo para Button com animações desativadas -->
+    <Style x:Key="NoAnimationButtonStyle" TargetType="Button">
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <TransitionCollection/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

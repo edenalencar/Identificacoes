@@ -8,8 +8,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <!-- Mesclar o novo dicionário de recursos -->
+                <!-- Dicionários de recursos do aplicativo -->
                 <ResourceDictionary Source="/Styles/SharedStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/AccessibilityStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

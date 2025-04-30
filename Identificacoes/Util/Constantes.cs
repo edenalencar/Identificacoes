@@ -38,6 +38,10 @@
         public const string Light = "Light";
         public const string Dark = "Dark";
         public const string Default = "Default";
-
+        
+        //Acessibilidade
+        public const string AltoContraste = "AltoContraste";
+        public const string TamanhoFonte = "TamanhoFonte";
+        public const string DesativarAnimacoes = "DesativarAnimacoes";
     }
 }

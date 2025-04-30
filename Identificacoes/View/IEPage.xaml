@@ -36,34 +36,37 @@
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,8">
                     <TextBlock Text="Estado:" VerticalAlignment="Center" Width="100"/>
-                    <ComboBox x:Name="Estados" Width="250" Margin="0,8">
-                        <ComboBoxItem Content="Acre" Tag="IE-AC"/>
-                        <ComboBoxItem Content="Alagoas" Tag="IE-AL"/>
-                        <ComboBoxItem Content="Amapá" Tag="IE-AP"/>
-                        <ComboBoxItem Content="Amazonas" Tag="IE-AM"/>
-                        <ComboBoxItem Content="Bahia" Tag="IE-BA"/>
-                        <ComboBoxItem Content="Ceará" Tag="IE-CE"/>
-                        <ComboBoxItem Content="Distrito Federal" Tag="IE-DF"/>
-                        <ComboBoxItem Content="Espírito Santo" Tag="IE-ES"/>
-                        <ComboBoxItem Content="Goiás" Tag="IE-GO"/>
-                        <ComboBoxItem Content="Maranhão" Tag="IE-MA"/>
-                        <ComboBoxItem Content="Mato Grosso" Tag="IE-MT"/>
-                        <ComboBoxItem Content="Mato Grosso do Sul" Tag="IE-MS"/>
-                        <ComboBoxItem Content="Minas Gerais" Tag="IE-MG"/>
-                        <ComboBoxItem Content="Pará" Tag="IE-PA"/>
-                        <ComboBoxItem Content="Paraíba" Tag="IE-PB"/>
-                        <ComboBoxItem Content="Paraná" Tag="IE-PR"/>
-                        <ComboBoxItem Content="Pernambuco" Tag="IE-PE"/>
-                        <ComboBoxItem Content="Piauí" Tag="IE-PI"/>
-                        <ComboBoxItem Content="Rio de Janeiro" Tag="IE-RJ"/>
-                        <ComboBoxItem Content="Rio Grande do Norte" Tag="IE-RN"/>
-                        <ComboBoxItem Content="Rio Grande do Sul" Tag="IE-RS"/>
-                        <ComboBoxItem Content="Rondônia" Tag="IE-RO"/>
-                        <ComboBoxItem Content="Roraima" Tag="IE-RR"/>
-                        <ComboBoxItem Content="Santa Catarina" Tag="IE-SC"/>
-                        <ComboBoxItem Content="São Paulo" Tag="IE-SP"/>
-                        <ComboBoxItem Content="Sergipe" Tag="IE-SE"/>
-                        <ComboBoxItem Content="Tocantins" Tag="IE-TO"/>
+                    <ComboBox x:Name="Estados" Width="250" Margin="0,8"
+                              AutomationProperties.Name="Selecione o estado (UF)"
+                              AutomationProperties.HelpText="Escolha a Unidade Federativa para gerar a Inscrição Estadual"
+                              TabIndex="0">
+                        <ComboBoxItem Content="Acre" Tag="IE-AC" AutomationProperties.Name="Acre - AC"/>
+                        <ComboBoxItem Content="Alagoas" Tag="IE-AL" AutomationProperties.Name="Alagoas - AL"/>
+                        <ComboBoxItem Content="Amapá" Tag="IE-AP" AutomationProperties.Name="Amapá - AP"/>
+                        <ComboBoxItem Content="Amazonas" Tag="IE-AM" AutomationProperties.Name="Amazonas - AM"/>
+                        <ComboBoxItem Content="Bahia" Tag="IE-BA" AutomationProperties.Name="Bahia - BA"/>
+                        <ComboBoxItem Content="Ceará" Tag="IE-CE" AutomationProperties.Name="Ceará - CE"/>
+                        <ComboBoxItem Content="Distrito Federal" Tag="IE-DF" AutomationProperties.Name="Distrito Federal - DF"/>
+                        <ComboBoxItem Content="Espírito Santo" Tag="IE-ES" AutomationProperties.Name="Espírito Santo - ES"/>
+                        <ComboBoxItem Content="Goiás" Tag="IE-GO" AutomationProperties.Name="Goiás - GO"/>
+                        <ComboBoxItem Content="Maranhão" Tag="IE-MA" AutomationProperties.Name="Maranhão - MA"/>
+                        <ComboBoxItem Content="Mato Grosso" Tag="IE-MT" AutomationProperties.Name="Mato Grosso - MT"/>
+                        <ComboBoxItem Content="Mato Grosso do Sul" Tag="IE-MS" AutomationProperties.Name="Mato Grosso do Sul - MS"/>
+                        <ComboBoxItem Content="Minas Gerais" Tag="IE-MG" AutomationProperties.Name="Minas Gerais - MG"/>
+                        <ComboBoxItem Content="Pará" Tag="IE-PA" AutomationProperties.Name="Pará - PA"/>
+                        <ComboBoxItem Content="Paraíba" Tag="IE-PB" AutomationProperties.Name="Paraíba - PB"/>
+                        <ComboBoxItem Content="Paraná" Tag="IE-PR" AutomationProperties.Name="Paraná - PR"/>
+                        <ComboBoxItem Content="Pernambuco" Tag="IE-PE" AutomationProperties.Name="Pernambuco - PE"/>
+                        <ComboBoxItem Content="Piauí" Tag="IE-PI" AutomationProperties.Name="Piauí - PI"/>
+                        <ComboBoxItem Content="Rio de Janeiro" Tag="IE-RJ" AutomationProperties.Name="Rio de Janeiro - RJ"/>
+                        <ComboBoxItem Content="Rio Grande do Norte" Tag="IE-RN" AutomationProperties.Name="Rio Grande do Norte - RN"/>
+                        <ComboBoxItem Content="Rio Grande do Sul" Tag="IE-RS" AutomationProperties.Name="Rio Grande do Sul - RS"/>
+                        <ComboBoxItem Content="Rondônia" Tag="IE-RO" AutomationProperties.Name="Rondônia - RO"/>
+                        <ComboBoxItem Content="Roraima" Tag="IE-RR" AutomationProperties.Name="Roraima - RR"/>
+                        <ComboBoxItem Content="Santa Catarina" Tag="IE-SC" AutomationProperties.Name="Santa Catarina - SC"/>
+                        <ComboBoxItem Content="São Paulo" Tag="IE-SP" AutomationProperties.Name="São Paulo - SP"/>
+                        <ComboBoxItem Content="Sergipe" Tag="IE-SE" AutomationProperties.Name="Sergipe - SE"/>
+                        <ComboBoxItem Content="Tocantins" Tag="IE-TO" AutomationProperties.Name="Tocantins - TO"/>
                     </ComboBox>
                 </StackPanel>
                 
@@ -71,26 +74,45 @@
                     <TextBlock Text="Quantidade:" VerticalAlignment="Center" Width="100"/>
                     <Slider x:Name="Quantidade" Style="{StaticResource ModernSliderStyle}"
                         Minimum="1" Maximum="100" StepFrequency="1" Value="1" 
-                        TickPlacement="Outside" TickFrequency="10"/>
+                        TickPlacement="Outside" TickFrequency="10"
+                        AutomationProperties.Name="Quantidade de Inscrições Estaduais"
+                        AutomationProperties.HelpText="Deslize para selecionar o número de IEs a gerar (1-100)"
+                        TabIndex="1"/>
                     <TextBlock Text="{Binding Value, ElementName=Quantidade, Mode=OneWay}" 
-                               Width="30" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                               Width="30" VerticalAlignment="Center" Margin="8,0,0,0"
+                               AutomationProperties.Name="Valor selecionado"/>
                 </StackPanel>
                 
                 <CheckBox x:Name="Formatado" Content="Formatado" 
-                          Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"/>
+                          Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"
+                          AutomationProperties.Name="Formatar Inscrição Estadual"
+                          AutomationProperties.HelpText="Ative para gerar Inscrições Estaduais no formato específico do estado selecionado"
+                          TabIndex="2"/>
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,16,0,0" Spacing="8">
-                    <Button x:Name="Gerar" Click="Gerar_IE" Style="{StaticResource PrimaryButtonStyle}">
+                    <Button x:Name="Gerar" Click="Gerar_IE" Style="{StaticResource PrimaryButtonStyle}"
+                            AutomationProperties.Name="Gerar Inscrições Estaduais"
+                            AutomationProperties.HelpText="Clique para gerar as Inscrições Estaduais com as configurações atuais"
+                            TabIndex="3">
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <FontIcon Glyph="&#xE117;" />
                             <TextBlock Text="Gerar" />
                         </StackPanel>
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="G" Modifiers="Control"/>
+                        </Button.KeyboardAccelerators>
                     </Button>
-                    <Button x:Name="Copiar" Click="Copiar_Resultado" Style="{StaticResource SecondaryButtonStyle}">
+                    <Button x:Name="Copiar" Click="Copiar_Resultado" Style="{StaticResource SecondaryButtonStyle}"
+                            AutomationProperties.Name="Copiar Inscrições Estaduais para área de transferência"
+                            AutomationProperties.HelpText="Clique para copiar as Inscrições Estaduais geradas para a área de transferência"
+                            TabIndex="4">
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <FontIcon Glyph="&#xE8C8;" />
                             <TextBlock Text="Copiar" />
                         </StackPanel>
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="C" Modifiers="Control"/>
+                        </Button.KeyboardAccelerators>
                     </Button>
                 </StackPanel>
             </Grid>
@@ -99,13 +121,35 @@
             <Grid Style="{StaticResource CardStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 
                 <TextBlock Text="Resultado" FontWeight="SemiBold" Margin="0,0,0,12" Grid.Row="0"/>
                 
-                <TextBox x:Name="Resultado" Grid.Row="1" Style="{StaticResource ResultTextBoxStyle}" 
-                         PlaceholderText="Selecione um estado e clique em Gerar..."/>
+                <!-- Elemento para notificações de leitores de tela e feedback visual -->
+                <Border x:Name="NotificacaoBorder" 
+                        Grid.Row="1" 
+                        Background="{ThemeResource SystemAccentColorLight1}"
+                        CornerRadius="4"
+                        Margin="0,0,0,8"
+                        Padding="8"
+                        HorizontalAlignment="Left"
+                        Visibility="Collapsed">
+                    <TextBlock x:Name="NotificacaoLiveRegion"
+                               Foreground="{ThemeResource SystemAccentColorDark1}"
+                               FontWeight="SemiBold"
+                               AutomationProperties.LiveSetting="Assertive"/>
+                </Border>
+                
+                <TextBox x:Name="Resultado" 
+                         Grid.Row="2" 
+                         Style="{StaticResource ResultTextBoxStyle}" 
+                         PlaceholderText="Selecione um estado e clique em Gerar..."
+                         AutomationProperties.Name="Resultados gerados"
+                         AutomationProperties.HelpText="Exibe as Inscrições Estaduais geradas conforme as configurações selecionadas"
+                         IsReadOnly="True"
+                         TabIndex="5"/>
             </Grid>
         </StackPanel>
     </ScrollViewer>

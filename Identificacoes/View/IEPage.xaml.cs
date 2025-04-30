@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -42,6 +43,7 @@ namespace Identificacoes.View
             {
                 string tag = selectedItem.Tag.ToString();
                 string estado = tag.Replace("IE-", "");
+                string nomeEstado = selectedItem.Content.ToString();
                 
                 // Obter a quantidade selecionada
                 int quantidade = (int)Quantidade.Value;
@@ -56,10 +58,33 @@ namespace Identificacoes.View
                 }
                 
                 Resultado.Text = sb.ToString();
+                
+                // Fornecer feedback para leitores de tela
+                string mensagem = quantidade == 1 
+                    ? $"1 Inscrição Estadual de {nomeEstado} gerada com sucesso" 
+                    : $"{quantidade} Inscrições Estaduais de {nomeEstado} geradas com sucesso";
+                
+                NotificacaoLiveRegion.Text = mensagem;
+                NotificacaoBorder.Visibility = Visibility.Visible;
+                
+                // Esconder a notificação após alguns segundos
+                DispatcherQueue.TryEnqueue(async () => {
+                    await Task.Delay(3000);
+                    NotificacaoBorder.Visibility = Visibility.Collapsed;
+                });
             }
             else
             {
                 Resultado.Text = "Selecione um estado para gerar a Inscrição Estadual.";
+                
+                // Feedback para leitores de tela
+                NotificacaoLiveRegion.Text = "Erro: Nenhum estado selecionado";
+                NotificacaoBorder.Visibility = Visibility.Visible;
+                
+                DispatcherQueue.TryEnqueue(async () => {
+                    await Task.Delay(3000);
+                    NotificacaoBorder.Visibility = Visibility.Collapsed;
+                });
             }
         }
 
@@ -73,6 +98,19 @@ namespace Identificacoes.View
                 
                 // Copiar para a área de transferência
                 Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
+                
+                // Fornecer feedback para leitores de tela
+                ComboBoxItem selectedItem = Estados.SelectedItem as ComboBoxItem;
+                string nomeEstado = selectedItem?.Content.ToString() ?? "selecionado";
+                
+                NotificacaoLiveRegion.Text = $"Inscrições Estaduais de {nomeEstado} copiadas para a área de transferência";
+                NotificacaoBorder.Visibility = Visibility.Visible;
+                
+                // Esconder a notificação após alguns segundos
+                DispatcherQueue.TryEnqueue(async () => {
+                    await Task.Delay(3000);
+                    NotificacaoBorder.Visibility = Visibility.Collapsed;
+                });
             }
         }
     }
