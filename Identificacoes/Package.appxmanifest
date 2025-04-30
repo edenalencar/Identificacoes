@@ -12,7 +12,7 @@
   <Identity
     Name="61699denAlencar.Identificaes"
     Publisher="CN=26939AD8-50B0-4A8B-9C77-451CFC0ED859"
-    Version="1.0.2.0" />
+    Version="2.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="10160158-d8fe-4440-bac5-d27db20bafa1" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
