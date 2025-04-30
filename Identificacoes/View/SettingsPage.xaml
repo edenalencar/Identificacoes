@@ -122,6 +122,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
                 <TextBlock Text="Sobre o Aplicativo" FontWeight="SemiBold" Margin="0,0,0,12" Grid.Row="0"/>
@@ -166,8 +167,29 @@
                     </StackPanel>
                 </StackPanel>
                 
+                <!-- Atalhos de teclado -->
+                <StackPanel Grid.Row="5" Spacing="8" Margin="0,0,0,12">
+                    <TextBlock Text="Atalhos de Teclado" FontWeight="SemiBold" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Ctrl+G" FontFamily="Consolas" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="Gerar documentos na página atual" VerticalAlignment="Center"/>
+                        
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Ctrl+C" FontFamily="Consolas" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Copiar resultados para área de transferência" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                
                 <!-- Links úteis -->
-                <StackPanel Grid.Row="5" Orientation="Horizontal" Spacing="12" Margin="0,8,0,0">
+                <StackPanel Grid.Row="6" Orientation="Horizontal" Spacing="12" Margin="0,8,0,0">
                     <HyperlinkButton NavigateUri="https://github.com/edenalencar/Identificacoes">
                         <HyperlinkButton.ContentTemplate>
                             <DataTemplate>
