@@ -15,6 +15,7 @@ namespace Identificacoes.Bu
         };
         
         private static readonly int baseAlfanumerica = caracteresValidos.Length; // 33
+        private static readonly Random random = new Random();
 
         public IdentificacaoCNPJAlfanumerico()
         {
@@ -55,8 +56,7 @@ namespace Identificacoes.Bu
 
         private char GerarCaractereAleatorio()
         {
-            Random rnd = new Random();
-            return caracteresValidos[rnd.Next(0, caracteresValidos.Length)];
+            return caracteresValidos[random.Next(0, caracteresValidos.Length)];
         }
 
         private int ObterValorCaractere(char caractere)
