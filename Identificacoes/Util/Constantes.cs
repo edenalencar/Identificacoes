@@ -4,6 +4,7 @@
     {
         public const string CPF = "CPF";
         public const string CNPJ = "CNPJ";
+        public const string CNPJ_ALFANUMERICO = "CNPJ_ALFANUMERICO";
         public const string IE = "Inscrição Estadual";
         public const string IE_AC = "IE-AC";
         public const string IE_AL = "IE-AL";

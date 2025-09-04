@@ -17,7 +17,7 @@
             <!-- InfoBar com dicas -->
             <InfoBar 
                 Title="Dica" 
-                Message="CNPJs gerados são para fins de teste. Gere filiais a partir da mesma matriz." 
+                Message="CNPJs gerados são para fins de teste. Escolha entre formato numérico (tradicional) ou alfanumérico (novo). Gere filiais a partir da mesma matriz." 
                 IsOpen="True" 
                 Severity="Informational"
                 Style="{StaticResource InfoBarStyle}"/>
@@ -30,40 +30,58 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
                 <TextBlock Text="Configurações" FontWeight="SemiBold" Margin="0,0,0,12" Grid.Row="0"/>
                 
-                <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,8">
+                <!-- Tipo de CNPJ -->
+                <StackPanel Grid.Row="1" Margin="0,8">
+                    <TextBlock Text="Tipo de CNPJ:" Margin="0,0,0,4"/>
+                    <StackPanel Orientation="Horizontal" Spacing="16">
+                        <RadioButton x:Name="TipoNumerico" Content="Numérico" 
+                                   GroupName="TipoCNPJ" IsChecked="True"
+                                   AutomationProperties.Name="CNPJ Numérico"
+                                   AutomationProperties.HelpText="Gerar CNPJs com apenas dígitos (formato tradicional)"
+                                   TabIndex="0"/>
+                        <RadioButton x:Name="TipoAlfanumerico" Content="Alfanumérico" 
+                                   GroupName="TipoCNPJ"
+                                   AutomationProperties.Name="CNPJ Alfanumérico"
+                                   AutomationProperties.HelpText="Gerar CNPJs com letras e números (novo formato)"
+                                   TabIndex="1"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,8">
                     <TextBlock Text="Quantidade:" VerticalAlignment="Center" Width="100"/>
                     <Slider x:Name="Quantidade" Style="{StaticResource ModernSliderStyle}"
                         Minimum="1" Maximum="100" StepFrequency="1" Value="1" 
                         TickPlacement="Outside" TickFrequency="10"
                         AutomationProperties.Name="Quantidade de CNPJs"
                         AutomationProperties.HelpText="Deslize para selecionar o número de CNPJs a gerar (1-100)"
-                        TabIndex="0"/>
+                        TabIndex="2"/>
                     <TextBlock Text="{Binding Value, ElementName=Quantidade, Mode=OneWay}" 
                                Width="30" VerticalAlignment="Center" Margin="8,0,0,0"
                                AutomationProperties.Name="Valor selecionado"/>
                 </StackPanel>
                 
                 <CheckBox x:Name="Formatado" Content="Formatado (xx.xxx.xxx/xxxx-xx)" 
-                          Grid.Row="2" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"
+                          Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"
                           AutomationProperties.Name="Formatar CNPJ"
                           AutomationProperties.HelpText="Ative para gerar CNPJs no formato xx.xxx.xxx/xxxx-xx"
-                          TabIndex="1"/>
+                          TabIndex="3"/>
                 
                 <CheckBox x:Name="Filiais" Content="Gerar filiais" 
-                          Grid.Row="3" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"
+                          Grid.Row="4" Style="{StaticResource ModernCheckBoxStyle}" IsChecked="False"
                           AutomationProperties.Name="Gerar CNPJs de filiais"
                           AutomationProperties.HelpText="Ative para gerar CNPJs de filiais a partir da mesma matriz"
-                          TabIndex="2"/>
+                          TabIndex="4"/>
                 
-                <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,16,0,0" Spacing="8">
+                <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,16,0,0" Spacing="8">
                     <Button x:Name="Gerar" Click="Gerar_CNPJ" Style="{StaticResource PrimaryButtonStyle}"
                             AutomationProperties.Name="Gerar CNPJs"
                             AutomationProperties.HelpText="Clique para gerar os CNPJs com as configurações atuais"
-                            TabIndex="3">
+                            TabIndex="5">
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <FontIcon Glyph="&#xE117;" />
                             <TextBlock Text="Gerar" />
@@ -75,7 +93,7 @@
                     <Button x:Name="Copiar" Click="Copiar_Resultado" Style="{StaticResource SecondaryButtonStyle}"
                             AutomationProperties.Name="Copiar CNPJs para área de transferência"
                             AutomationProperties.HelpText="Clique para copiar os CNPJs gerados para a área de transferência"
-                            TabIndex="4">
+                            TabIndex="6">
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <FontIcon Glyph="&#xE8C8;" />
                             <TextBlock Text="Copiar" />

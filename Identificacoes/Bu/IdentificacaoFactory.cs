@@ -9,7 +9,8 @@ namespace Identificacoes.Bu
         private IdentificacaoFactory() 
         {
             _ident.Add(Constantes.CPF, new IdentificacaoCPF());
-            _ident.Add(Constantes.CNPJ, new IdentificacaoCNPJ());           
+            _ident.Add(Constantes.CNPJ, new IdentificacaoCNPJ());
+            _ident.Add(Constantes.CNPJ_ALFANUMERICO, new IdentificacaoCNPJAlfanumerico());           
         }
 
         public Identificacao GetIdentificacao(string tipoIdentificacao)

@@ -27,15 +27,26 @@ namespace Identificacoes.View
             var builder = new StringBuilder();
             var identificacaoCNPJ = new List<Identificacao>();
             int quantidade = (int)Quantidade.Value;
+            
+            // Determina o tipo de CNPJ a ser gerado
+            string tipoCNPJ = (bool)TipoAlfanumerico.IsChecked ? Constantes.CNPJ_ALFANUMERICO : Constantes.CNPJ;
 
             if ((bool)Filiais.IsChecked)
             {
-                var matriz = IdentificacaoFactory.GetInstance().GetIdentificacao(Constantes.CNPJ);
+                var matriz = IdentificacaoFactory.GetInstance().GetIdentificacao(tipoCNPJ);
                 identificacaoCNPJ.Add(matriz);
 
                 for (int i = 1; i < quantidade; i++)
                 {
-                    var filial = new IdentificacaoCNPJ(matriz.identificacaoModel.Nucleo, i.ToString());
+                    Identificacao filial;
+                    if (tipoCNPJ == Constantes.CNPJ_ALFANUMERICO)
+                    {
+                        filial = new IdentificacaoCNPJAlfanumerico(matriz.identificacaoModel.Nucleo, i.ToString());
+                    }
+                    else
+                    {
+                        filial = new IdentificacaoCNPJ(matriz.identificacaoModel.Nucleo, i.ToString());
+                    }
                     identificacaoCNPJ.Add(filial);
                 }
                 foreach (var identificacao in identificacaoCNPJ)
@@ -54,7 +65,16 @@ namespace Identificacoes.View
             {
                 for (int i = 0; i < quantidade; i++)
                 {
-                    var identificacao = new IdentificacaoCNPJ();
+                    Identificacao identificacao;
+                    if (tipoCNPJ == Constantes.CNPJ_ALFANUMERICO)
+                    {
+                        identificacao = new IdentificacaoCNPJAlfanumerico();
+                    }
+                    else
+                    {
+                        identificacao = new IdentificacaoCNPJ();
+                    }
+                    
                     if ((bool)Formatado.IsChecked)
                     {
                         builder.Append(identificacao.ObterIdentificacaoFormatada() + "\n");
@@ -69,9 +89,10 @@ namespace Identificacoes.View
             
             // Fornecer feedback para leitores de tela
             string tipoGeracao = (bool)Filiais.IsChecked ? "filiais" : "";
+            string tipoFormatoTexto = (bool)TipoAlfanumerico.IsChecked ? "alfanuméricos" : "numéricos";
             string mensagem = quantidade == 1 
-                ? "1 CNPJ gerado com sucesso" 
-                : $"{quantidade} CNPJs {tipoGeracao} gerados com sucesso";
+                ? $"1 CNPJ {tipoFormatoTexto} gerado com sucesso" 
+                : $"{quantidade} CNPJs {tipoFormatoTexto} {tipoGeracao} gerados com sucesso";
             
             NotificacaoLiveRegion.Text = mensagem;
             NotificacaoBorder.Visibility = Visibility.Visible;
