@@ -144,7 +144,10 @@ namespace Identificacoes.Bu
         {
             if (identificacaoModel.Filial == null)
             {
-                identificacaoModel.Filial = "0001";
+                // Gera um número de filial aleatório entre 0001 e 9999
+                var random = new Random();
+                var numeroFilial = random.Next(1, 10000);
+                identificacaoModel.Filial = numeroFilial.ToString().PadLeft(4, '0');
             }
             else
             {
