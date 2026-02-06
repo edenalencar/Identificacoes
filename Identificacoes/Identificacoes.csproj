@@ -12,12 +12,12 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <DefaultLanguage>pt-BR</DefaultLanguage>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <AppxBundle>Never</AppxBundle>
+    <AppxBundle>Always</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
   </PropertyGroup>
@@ -75,5 +75,7 @@
   
 <PropertyGroup>
   <UseRidGraph>true</UseRidGraph>
+  <PackageCertificateThumbprint>6196118FDEEA7E247DE65C7EEC13702E79576D43</PackageCertificateThumbprint>
+  <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
 </PropertyGroup>
 </Project>
